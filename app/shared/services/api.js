@@ -51,6 +51,54 @@ const create = (baseURL = AppConfig.apiUrl) => {
   const createUser = (user) => api.post('api/users', user)
   const updateUser = (user) => api.put('api/users', user)
   const deleteUser = (userId) => api.delete('api/users/' + userId)
+
+  const getCourse = (courseId) => api.get('api/courses/' + courseId)
+  const getCourses = (options) => api.get('api/courses', options)
+  const createCourse = (course) => api.post('api/courses', course)
+  const updateCourse = (course) => api.put('api/courses', course)
+  const deleteCourse = (courseId) => api.delete('api/courses/' + courseId)
+
+  const getUserDetail = (userDetailId) => api.get('api/user-details/' + userDetailId)
+  const getUserDetails = (options) => api.get('api/user-details', options)
+  const createUserDetail = (userDetail) => api.post('api/user-details', userDetail)
+  const updateUserDetail = (userDetail) => api.put('api/user-details', userDetail)
+  const deleteUserDetail = (userDetailId) => api.delete('api/user-details/' + userDetailId)
+
+  const getUserDetailsExtra = (userDetailsExtraId) => api.get('api/user-details-extras/' + userDetailsExtraId)
+  const getUserDetailsExtras = (options) => api.get('api/user-details-extras', options)
+  const createUserDetailsExtra = (userDetailsExtra) => api.post('api/user-details-extras', userDetailsExtra)
+  const updateUserDetailsExtra = (userDetailsExtra) => api.put('api/user-details-extras', userDetailsExtra)
+  const deleteUserDetailsExtra = (userDetailsExtraId) => api.delete('api/user-details-extras/' + userDetailsExtraId)
+
+  const getCourseParticipant = (courseParticipantId) => api.get('api/course-participants/' + courseParticipantId)
+  const getCourseParticipants = (options) => api.get('api/course-participants', options)
+  const createCourseParticipant = (courseParticipant) => api.post('api/course-participants', courseParticipant)
+  const updateCourseParticipant = (courseParticipant) => api.put('api/course-participants', courseParticipant)
+  const deleteCourseParticipant = (courseParticipantId) => api.delete('api/course-participants/' + courseParticipantId)
+
+  const getCertificate = (certificateId) => api.get('api/certificates/' + certificateId)
+  const getCertificates = (options) => api.get('api/certificates', options)
+  const createCertificate = (certificate) => api.post('api/certificates', certificate)
+  const updateCertificate = (certificate) => api.put('api/certificates', certificate)
+  const deleteCertificate = (certificateId) => api.delete('api/certificates/' + certificateId)
+
+  const getAchievementDictionary = (achievementDictionaryId) => api.get('api/achievement-dictionaries/' + achievementDictionaryId)
+  const getAchievementDictionaries = (options) => api.get('api/achievement-dictionaries', options)
+  const createAchievementDictionary = (achievementDictionary) => api.post('api/achievement-dictionaries', achievementDictionary)
+  const updateAchievementDictionary = (achievementDictionary) => api.put('api/achievement-dictionaries', achievementDictionary)
+  const deleteAchievementDictionary = (achievementDictionaryId) => api.delete('api/achievement-dictionaries/' + achievementDictionaryId)
+
+  const getFacultyDictionary = (facultyDictionaryId) => api.get('api/faculty-dictionaries/' + facultyDictionaryId)
+  const getFacultyDictionaries = (options) => api.get('api/faculty-dictionaries', options)
+  const createFacultyDictionary = (facultyDictionary) => api.post('api/faculty-dictionaries', facultyDictionary)
+  const updateFacultyDictionary = (facultyDictionary) => api.put('api/faculty-dictionaries', facultyDictionary)
+  const deleteFacultyDictionary = (facultyDictionaryId) => api.delete('api/faculty-dictionaries/' + facultyDictionaryId)
+
+  const getFieldOfStudyDictionary = (fieldOfStudyDictionaryId) => api.get('api/field-of-study-dictionaries/' + fieldOfStudyDictionaryId)
+  const getFieldOfStudyDictionaries = (options) => api.get('api/field-of-study-dictionaries', options)
+  const createFieldOfStudyDictionary = (fieldOfStudyDictionary) => api.post('api/field-of-study-dictionaries', fieldOfStudyDictionary)
+  const updateFieldOfStudyDictionary = (fieldOfStudyDictionary) => api.put('api/field-of-study-dictionaries', fieldOfStudyDictionary)
+  const deleteFieldOfStudyDictionary = (fieldOfStudyDictionaryId) => api.delete('api/field-of-study-dictionaries/' + fieldOfStudyDictionaryId)
   // ignite-jhipster-api-method-needle
 
   // ------
@@ -72,6 +120,54 @@ const create = (baseURL = AppConfig.apiUrl) => {
     getUsers,
     getUser,
     deleteUser,
+
+    createCourse,
+    updateCourse,
+    getCourses,
+    getCourse,
+    deleteCourse,
+
+    createUserDetail,
+    updateUserDetail,
+    getUserDetails,
+    getUserDetail,
+    deleteUserDetail,
+
+    createUserDetailsExtra,
+    updateUserDetailsExtra,
+    getUserDetailsExtras,
+    getUserDetailsExtra,
+    deleteUserDetailsExtra,
+
+    createCourseParticipant,
+    updateCourseParticipant,
+    getCourseParticipants,
+    getCourseParticipant,
+    deleteCourseParticipant,
+
+    createCertificate,
+    updateCertificate,
+    getCertificates,
+    getCertificate,
+    deleteCertificate,
+
+    createAchievementDictionary,
+    updateAchievementDictionary,
+    getAchievementDictionaries,
+    getAchievementDictionary,
+    deleteAchievementDictionary,
+
+    createFacultyDictionary,
+    updateFacultyDictionary,
+    getFacultyDictionaries,
+    getFacultyDictionary,
+    deleteFacultyDictionary,
+
+    createFieldOfStudyDictionary,
+    updateFieldOfStudyDictionary,
+    getFieldOfStudyDictionaries,
+    getFieldOfStudyDictionary,
+    deleteFieldOfStudyDictionary,
     // ignite-jhipster-api-export-needle
     setAuthToken,
     removeAuthToken,

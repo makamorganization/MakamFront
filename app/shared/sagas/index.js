@@ -38,7 +38,7 @@ import { getCourseParticipant, getCourseParticipants, updateCourseParticipant, d
 import { getCertificate, getCertificates, updateCertificate, deleteCertificate } from '../../modules/entities/certificate/certificate.sagas'
 import { getAchievementDictionary, getAchievementDictionaries, updateAchievementDictionary, deleteAchievementDictionary } from '../../modules/entities/achievement-dictionary/achievement-dictionary.sagas'
 import { getFacultyDictionary, getFacultyDictionaries, updateFacultyDictionary, deleteFacultyDictionary } from '../../modules/entities/faculty-dictionary/faculty-dictionary.sagas'
-import { getFieldOfStudyDictionary, getFieldOfStudyDictionaries, updateFieldOfStudyDictionary, deleteFieldOfStudyDictionary } from '../../modules/entities/field-of-study-dictionary/field-of-study-dictionary.sagas'
+import { getFieldOfStudyDictionary, getFieldOfStudyDictionaries, getFieldOfStudyDictionariesForFaculty, updateFieldOfStudyDictionary, deleteFieldOfStudyDictionary } from '../../modules/entities/field-of-study-dictionary/field-of-study-dictionary.sagas'
 // ignite-jhipster-saga-method-import-needle
 
 /* ------------- API ------------- */
@@ -99,6 +99,7 @@ export default function * root () {
 
     takeLatest(FieldOfStudyDictionaryTypes.FIELD_OF_STUDY_DICTIONARY_REQUEST, getFieldOfStudyDictionary, api),
     takeLatest(FieldOfStudyDictionaryTypes.FIELD_OF_STUDY_DICTIONARY_ALL_REQUEST, getFieldOfStudyDictionaries, api),
+    takeLatest(FieldOfStudyDictionaryTypes.FIELD_OF_STUDY_DICTIONARY_FOR_FACULTY_REQUEST, getFieldOfStudyDictionariesForFaculty,api),
     takeLatest(FieldOfStudyDictionaryTypes.FIELD_OF_STUDY_DICTIONARY_UPDATE_REQUEST, updateFieldOfStudyDictionary, api),
     takeLatest(FieldOfStudyDictionaryTypes.FIELD_OF_STUDY_DICTIONARY_DELETE_REQUEST, deleteFieldOfStudyDictionary, api),
     // ignite-jhipster-saga-redux-connect-needle

@@ -17,6 +17,7 @@ export const reducers = combineReducers({
   achievementDictionaries: require('../../modules/entities/achievement-dictionary/achievement-dictionary.reducer').reducer,
   facultyDictionaries: require('../../modules/entities/faculty-dictionary/faculty-dictionary.reducer').reducer,
   fieldOfStudyDictionaries: require('../../modules/entities/field-of-study-dictionary/field-of-study-dictionary.reducer').reducer,
+  fieldOfStudyDictionariesForFaculty: require('../../modules/entities/field-of-study-dictionary/field-of-study-dictionary.reducer').reducer,
   // ignite-jhipster-redux-store-import-needle
   account: require('./account.reducer').reducer,
   login: require('../../modules/login/login.reducer').reducer,

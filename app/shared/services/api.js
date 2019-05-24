@@ -96,6 +96,7 @@ const create = (baseURL = AppConfig.apiUrl) => {
 
   const getFieldOfStudyDictionary = (fieldOfStudyDictionaryId) => api.get('api/field-of-study-dictionaries/' + fieldOfStudyDictionaryId)
   const getFieldOfStudyDictionaries = (options) => api.get('api/field-of-study-dictionaries', options)
+  const getFieldOfStudyDictionariesForFaculty = (facultyId) => api.get('api/field-of-study-dictionaries-for-faculty/' + facultyId)
   const createFieldOfStudyDictionary = (fieldOfStudyDictionary) => api.post('api/field-of-study-dictionaries', fieldOfStudyDictionary)
   const updateFieldOfStudyDictionary = (fieldOfStudyDictionary) => api.put('api/field-of-study-dictionaries', fieldOfStudyDictionary)
   const deleteFieldOfStudyDictionary = (fieldOfStudyDictionaryId) => api.delete('api/field-of-study-dictionaries/' + fieldOfStudyDictionaryId)
@@ -166,6 +167,7 @@ const create = (baseURL = AppConfig.apiUrl) => {
     createFieldOfStudyDictionary,
     updateFieldOfStudyDictionary,
     getFieldOfStudyDictionaries,
+    getFieldOfStudyDictionariesForFaculty,
     getFieldOfStudyDictionary,
     deleteFieldOfStudyDictionary,
     // ignite-jhipster-api-export-needle

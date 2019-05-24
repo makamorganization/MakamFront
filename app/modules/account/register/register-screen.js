@@ -3,6 +3,7 @@ import { Alert, ScrollView, Text, TouchableHighlight } from 'react-native'
 import { connect } from 'react-redux'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import FacultyDictionaryActions from '../../entities/faculty-dictionary/faculty-dictionary.reducer'
+import FieldOfFacultyDictionaryActions from '../../entities/field-of-study-dictionary/field-of-study-dictionary.reducer'
 import { Navigation } from 'react-native-navigation'
 import t from 'tcomb-form-native'
 
@@ -17,11 +18,13 @@ class RegisterScreen extends React.Component {
     super(props)
     Navigation.events().bindComponent(this)
     this.state = {
+      currentFacultyId: 0,
       accountModel: t.struct({
+        login: t.String,
         firstName: t.String,
         lastName: t.String,
         facultyId: this.getFacultyDictionaries(),
-        fieldOfStudyId:t.String,
+        fieldOfStudyId: this.getFieldOfStudyDictionariesForFaculty(),
         studentCardNumber:t.Number,
         studyYear:t.Number,
         telephoneNumber:t.Number,
@@ -29,9 +32,14 @@ class RegisterScreen extends React.Component {
         confirmPassword: t.String,
         email: t.String,
       }),
-      accountValue: { firstName: null, lastName: null, facultyId: null, fieldOfStudyId: null, studentCardNumber: null, studyYear: null, telephoneNumber: null, password: null, confirmPassword: null, email: null },
+      accountValue: { login: null, firstName: null, lastName: null, facultyId: null, fieldOfStudyId: null, studentCardNumber: null, studyYear: null, telephoneNumber: null, password: null, confirmPassword: null, email: null },
       options: {
         fields: {
+          login : {
+            label: 'Login',
+            returnKeyType: 'next',
+            onSubmitEditing: () => this.refs.form.getComponent('firstName').refs.input.focus()
+          },
           firstName: {
             label: 'Imie',
             returnKeyType: 'next',
@@ -85,16 +93,24 @@ class RegisterScreen extends React.Component {
     }
     this.submitUpdate = this.submitUpdate.bind(this)
     this.accountChange = this.accountChange.bind(this)
-    this.props.getAllFacultyDictionaries()
   }
 
-
+  h
   getFacultyDictionaries = () => {
     const facultyDictionaries = {}
     this.props.facultyDictionaries.forEach(facultyDictionary => {
       facultyDictionaries[facultyDictionary.id] = facultyDictionary.id ? facultyDictionary.value.toString() : facultyDictionary.value.toString()
     })
     return t.maybe(t.enums(facultyDictionaries))
+  }
+
+  getFieldOfStudyDictionariesForFaculty = () => {
+    const fieldOfStudyDictionariesForFaculty = {}
+    this.props.fieldOfStudyDictionariesForFaculty.forEach(fieldOfFaculty => {
+      fieldOfStudyDictionariesForFaculty[fieldOfFaculty.id] = fieldOfFaculty.id ? fieldOfFaculty.value.toString() : fieldOfFaculty.value.toString()
+    })
+
+    return t.maybe(t.enums(fieldOfStudyDictionariesForFaculty))
   }
 
   submitUpdate () {
@@ -114,7 +130,9 @@ class RegisterScreen extends React.Component {
 
   componentWillReceiveProps (newProps) {
     // Did the register attempt complete?
-    if (!newProps.fetching) {
+    console.log(newProps);
+
+    if (!newProps.fetching && !newProps.fieldOfStudyDictionariesForFaculty) {
       if (newProps.error) {
         Alert.alert('Error', (newProps.error && newProps.error.title) ? newProps.error.title : '', [{ text: 'OK' }])
       } else {
@@ -127,10 +145,30 @@ class RegisterScreen extends React.Component {
     }
   }
 
+
+  componentWillMount(){
+    this.props.getAllFacultyDictionaries()
+    this.props.getFieldOfStudyDictionariesForFaculty(this.state.currentFacultyId)
+  }
+
+  componentDidUpdate(prevProps,prevState) {
+    if (this.state.currentFacultyId !== prevState.currentFacultyId) {
+      console.log('zmianaa');
+      console.log(this.props.getFieldOfStudyDictionariesForFaculty(this.state.currentFacultyId))
+    }
+  }
+
   accountChange (newValue) {
+    if(newValue.facultyId != '' && newValue.facultyId !== this.state.currentFacultyId) {
+      this.setState({
+        currentFacultyId: newValue.facultyId
+      })
+    }
+
     this.setState({
-      accountValue: newValue
+      accountValue: newValue,
     })
+
   }
 
   render () {
@@ -156,6 +194,7 @@ class RegisterScreen extends React.Component {
 const mapStateToProps = (state) => {
   return {
     facultyDictionaries: state.facultyDictionaries.facultyDictionaries || [],
+    fieldOfStudyDictionariesForFaculty: state.fieldOfStudyDictionariesForFaculty.fieldOfStudyDictionariesForFaculty || [],
     fetching: state.register.fetching,
     error: state.register.error
   }
@@ -164,6 +203,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getAllFacultyDictionaries: (options) => dispatch(FacultyDictionaryActions.facultyDictionaryAllRequest(options)),
+    getFieldOfStudyDictionariesForFaculty: (facultyId) => dispatch(FieldOfFacultyDictionaryActions.fieldOfStudyDictionaryForFacultyRequest(facultyId)),
     register: (account) => dispatch(RegisterActions.registerRequest(account))
   }
 }

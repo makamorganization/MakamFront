@@ -2,6 +2,7 @@ import React from 'react'
 import { Alert, ScrollView, Text, TouchableHighlight } from 'react-native'
 import { connect } from 'react-redux'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import FacultyDictionaryActions from '../../entities/faculty-dictionary/faculty-dictionary.reducer'
 import { Navigation } from 'react-native-navigation'
 import t from 'tcomb-form-native'
 
@@ -17,17 +18,47 @@ class RegisterScreen extends React.Component {
     Navigation.events().bindComponent(this)
     this.state = {
       accountModel: t.struct({
-        login: t.String,
+        firstName: t.String,
+        lastName: t.String,
+        facultyId: this.getFacultyDictionaries(),
+        fieldOfStudyId:t.String,
+        studentCardNumber:t.Number,
+        studyYear:t.Number,
+        telephoneNumber:t.Number,
         password: t.String,
         confirmPassword: t.String,
         email: t.String,
-        langKey: t.String
       }),
-      accountValue: { login: null, password: null, confirmPassword: null, email: null, langKey: 'en' },
+      accountValue: { firstName: null, lastName: null, facultyId: null, fieldOfStudyId: null, studentCardNumber: null, studyYear: null, telephoneNumber: null, password: null, confirmPassword: null, email: null },
       options: {
         fields: {
-          login: {
-            label: 'Username',
+          firstName: {
+            label: 'Imie',
+            returnKeyType: 'next',
+            onSubmitEditing: () => this.refs.form.getComponent('lastName').refs.input.focus()
+          },
+          lastName: {
+            label: 'Nazwisko',
+            returnKeyType: 'next',
+            onSubmitEditing: () => this.refs.form.getComponent('facultyId').refs.input.focus()
+          },
+          facultyId: {
+            returnKeyType: 'next',
+            onSubmitEditing: () => this.refs.form.getComponent('fieldOfStudyId').refs.input.focus()
+          },
+          fieldOfStudyId: {
+            returnKeyType: 'next',
+            onSubmitEditing: () => this.refs.form.getComponent('studentCardNumber').refs.input.focus()
+          },
+          studentCardNumber: {
+            returnKeyType: 'next',
+            onSubmitEditing: () => this.refs.form.getComponent('studyYear').refs.input.focus()
+          },
+          studyYear: {
+            returnKeyType: 'next',
+            onSubmitEditing: () => this.refs.form.getComponent('telephoneNumber').refs.input.focus()
+          },
+          telephoneNumber: {
             returnKeyType: 'next',
             onSubmitEditing: () => this.refs.form.getComponent('password').refs.input.focus()
           },
@@ -54,6 +85,16 @@ class RegisterScreen extends React.Component {
     }
     this.submitUpdate = this.submitUpdate.bind(this)
     this.accountChange = this.accountChange.bind(this)
+    this.props.getAllFacultyDictionaries()
+  }
+
+
+  getFacultyDictionaries = () => {
+    const facultyDictionaries = {}
+    this.props.facultyDictionaries.forEach(facultyDictionary => {
+      facultyDictionaries[facultyDictionary.id] = facultyDictionary.id ? facultyDictionary.value.toString() : facultyDictionary.value.toString()
+    })
+    return t.maybe(t.enums(facultyDictionaries))
   }
 
   submitUpdate () {
@@ -114,6 +155,7 @@ class RegisterScreen extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    facultyDictionaries: state.facultyDictionaries.facultyDictionaries || [],
     fetching: state.register.fetching,
     error: state.register.error
   }
@@ -121,6 +163,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    getAllFacultyDictionaries: (options) => dispatch(FacultyDictionaryActions.facultyDictionaryAllRequest(options)),
     register: (account) => dispatch(RegisterActions.registerRequest(account))
   }
 }

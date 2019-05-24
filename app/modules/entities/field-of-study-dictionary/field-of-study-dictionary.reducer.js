@@ -5,11 +5,13 @@ import Immutable from 'seamless-immutable'
 
 const { Types, Creators } = createActions({
   fieldOfStudyDictionaryRequest: ['fieldOfStudyDictionaryId'],
+  fieldOfStudyDictionaryForFacultyRequest: ['facultyId'],
   fieldOfStudyDictionaryAllRequest: ['options'],
   fieldOfStudyDictionaryUpdateRequest: ['fieldOfStudyDictionary'],
   fieldOfStudyDictionaryDeleteRequest: ['fieldOfStudyDictionaryId'],
 
   fieldOfStudyDictionarySuccess: ['fieldOfStudyDictionary'],
+  fieldOfStudyDictionaryForFacultySuccess: ['fieldOfStudyDictionariesForFaculty'],
   fieldOfStudyDictionaryAllSuccess: ['fieldOfStudyDictionaries'],
   fieldOfStudyDictionaryUpdateSuccess: ['fieldOfStudyDictionary'],
   fieldOfStudyDictionaryDeleteSuccess: [],

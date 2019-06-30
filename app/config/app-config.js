@@ -1,6 +1,6 @@
 // Simple React Native specific changes
 
 export default {
-  apiUrl: 'https://makam-app.herokuapp.com/',
+  apiUrl: 'http://localhost:8080/',
   appUrlScheme: 'makamfront'
 }

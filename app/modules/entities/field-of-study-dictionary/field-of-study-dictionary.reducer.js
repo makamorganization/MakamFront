@@ -5,16 +5,19 @@ import Immutable from 'seamless-immutable'
 
 const { Types, Creators } = createActions({
   fieldOfStudyDictionaryRequest: ['fieldOfStudyDictionaryId'],
+  fieldOfStudyDictionaryForFacultyRequest: ['facultyId'],
   fieldOfStudyDictionaryAllRequest: ['options'],
   fieldOfStudyDictionaryUpdateRequest: ['fieldOfStudyDictionary'],
   fieldOfStudyDictionaryDeleteRequest: ['fieldOfStudyDictionaryId'],
 
   fieldOfStudyDictionarySuccess: ['fieldOfStudyDictionary'],
+  fieldOfStudyDictionaryForFacultySuccess: ['fieldOfStudyDictionariesForFaculty'],
   fieldOfStudyDictionaryAllSuccess: ['fieldOfStudyDictionaries'],
   fieldOfStudyDictionaryUpdateSuccess: ['fieldOfStudyDictionary'],
   fieldOfStudyDictionaryDeleteSuccess: [],
 
   fieldOfStudyDictionaryFailure: ['error'],
+  fieldOfStudyDictionaryForFacultyFailure: ['error'],
   fieldOfStudyDictionaryAllFailure: ['error'],
   fieldOfStudyDictionaryUpdateFailure: ['error'],
   fieldOfStudyDictionaryDeleteFailure: ['error']
@@ -32,6 +35,7 @@ export const INITIAL_STATE = Immutable({
   deleting: null,
   fieldOfStudyDictionary: null,
   fieldOfStudyDictionaries: null,
+  fieldOfStudyDictionariesForFaculty: null,
   errorOne: null,
   errorAll: null,
   errorUpdating: null,
@@ -53,6 +57,13 @@ export const allRequest = (state) =>
     fetchingAll: true,
     fieldOfStudyDictionaries: null
   })
+
+export const allForFacultyRequest = (state) =>
+  state.merge({
+    fetchingAll: true,
+    fieldOfStudyDictionariesForFaculty: null
+  })
+
 
 // request to update from an api
 export const updateRequest = (state) =>
@@ -81,6 +92,15 @@ export const allSuccess = (state, action) => {
     fetchingAll: false,
     errorAll: null,
     fieldOfStudyDictionaries
+  })
+}
+
+export const allForFacultySuccess = (state,action) => {
+  const {fieldOfStudyDictionariesForFaculty} = action
+  return state.merge({
+    fetchingAll: false,
+    errorAll: null,
+    fieldOfStudyDictionariesForFaculty
   })
 }
 // successful api update
@@ -119,6 +139,15 @@ export const allFailure = (state, action) => {
     fieldOfStudyDictionaries: null
   })
 }
+
+export const allForFacultyFailure = (state,action) => {
+  const { error } = action
+  return state.merge({
+    fetchingAll: false,
+    errorAll: error,
+    fieldOfStudyDictionariesForFaculty: null
+  })
+}
 // Something went wrong updating.
 export const updateFailure = (state, action) => {
   const { error } = action
@@ -143,16 +172,19 @@ export const deleteFailure = (state, action) => {
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.FIELD_OF_STUDY_DICTIONARY_REQUEST]: request,
   [Types.FIELD_OF_STUDY_DICTIONARY_ALL_REQUEST]: allRequest,
+  [Types.FIELD_OF_STUDY_DICTIONARY_FOR_FACULTY_REQUEST]: allForFacultyRequest,
   [Types.FIELD_OF_STUDY_DICTIONARY_UPDATE_REQUEST]: updateRequest,
   [Types.FIELD_OF_STUDY_DICTIONARY_DELETE_REQUEST]: deleteRequest,
 
   [Types.FIELD_OF_STUDY_DICTIONARY_SUCCESS]: success,
   [Types.FIELD_OF_STUDY_DICTIONARY_ALL_SUCCESS]: allSuccess,
+  [Types.FIELD_OF_STUDY_DICTIONARY_FOR_FACULTY_SUCCESS]: allForFacultySuccess,
   [Types.FIELD_OF_STUDY_DICTIONARY_UPDATE_SUCCESS]: updateSuccess,
   [Types.FIELD_OF_STUDY_DICTIONARY_DELETE_SUCCESS]: deleteSuccess,
 
   [Types.FIELD_OF_STUDY_DICTIONARY_FAILURE]: failure,
   [Types.FIELD_OF_STUDY_DICTIONARY_ALL_FAILURE]: allFailure,
+  [Types.FIELD_OF_STUDY_DICTIONARY_FOR_FACULTY_FAILURE]: allForFacultyFailure,
   [Types.FIELD_OF_STUDY_DICTIONARY_UPDATE_FAILURE]: updateFailure,
   [Types.FIELD_OF_STUDY_DICTIONARY_DELETE_FAILURE]: deleteFailure
 })

@@ -30,6 +30,19 @@ export function * getFieldOfStudyDictionaries (api, action) {
   }
 }
 
+export function * getFieldOfStudyDictionariesForFaculty(api,action) {
+  const { facultyId } = action
+
+  const apiCall = call(api.getFieldOfStudyDictionariesForFaculty, facultyId)
+  const response = yield call(callApi, apiCall)
+
+  if (response.ok) {
+    yield put(FieldOfStudyDictionaryActions.fieldOfStudyDictionaryForFacultySuccess(response.data))
+  } else {
+    yield put(FieldOfStudyDictionaryActions.fieldOfStudyDictionaryForFacultyFailure(response.data))
+  }
+}
+
 export function * updateFieldOfStudyDictionary (api, action) {
   const { fieldOfStudyDictionary } = action
   // make the call to the api

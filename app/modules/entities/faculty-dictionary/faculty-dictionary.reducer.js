@@ -50,7 +50,7 @@ export const request = (state) =>
 // request the data from an api
 export const allRequest = (state) =>
   state.merge({
-    fetchingAll: true,
+    fetchingAll: false,
     facultyDictionaries: null
   })
 

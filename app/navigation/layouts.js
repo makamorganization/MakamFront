@@ -41,6 +41,10 @@ import FacultyDictionaryEntityEditScreen from '../modules/entities/faculty-dicti
 import FieldOfStudyDictionaryEntityScreen from '../modules/entities/field-of-study-dictionary/field-of-study-dictionary-entity-screen'
 import FieldOfStudyDictionaryEntityDetailScreen from '../modules/entities/field-of-study-dictionary/field-of-study-dictionary-entity-detail-screen'
 import FieldOfStudyDictionaryEntityEditScreen from '../modules/entities/field-of-study-dictionary/field-of-study-dictionary-entity-edit-screen'
+import CalendarScreen from '../modules/calendar/calendar-screen'
+import CertificatesScreen from '../modules/certificates/certificates-screen'
+import CoursesScreen from '../modules/courses/courses-screen'
+import RankScreen from '../modules/rank/rank-screen'
 // ignite-jhipster-navigation-import-needle
 
 export const LOGIN_SCREEN = 'nav.LoginScreen'
@@ -75,6 +79,10 @@ export const FACULTY_DICTIONARY_ENTITY_EDIT_SCREEN = 'Nav.FacultyDictionaryEntit
 export const FIELD_OF_STUDY_DICTIONARY_ENTITY_SCREEN = 'Nav.FieldOfStudyDictionaryEntityScreen'
 export const FIELD_OF_STUDY_DICTIONARY_ENTITY_DETAIL_SCREEN = 'Nav.FieldOfStudyDictionaryEntityDetailScreen'
 export const FIELD_OF_STUDY_DICTIONARY_ENTITY_EDIT_SCREEN = 'Nav.FieldOfStudyDictionaryEntityEditScreen'
+export const CALENDAR_SCREEN = 'nav.CalendarScreen'
+export const CERTIFICATES_SCREEN = 'nav.CertificatesScreen'
+export const COURSES_SCREEN = 'nav.CoursesScreen'
+export const RANK_SCREEN = 'nav.RankScreen'
 // ignite-jhipster-navigation-declaration-needle
 
 const store = createStore()
@@ -182,6 +190,10 @@ export function registerScreensAndStartApp () {
   Navigation.registerComponentWithRedux(FIELD_OF_STUDY_DICTIONARY_ENTITY_SCREEN, () => FieldOfStudyDictionaryEntityScreen, Provider, store)
   Navigation.registerComponentWithRedux(FIELD_OF_STUDY_DICTIONARY_ENTITY_DETAIL_SCREEN, () => FieldOfStudyDictionaryEntityDetailScreen, Provider, store)
   Navigation.registerComponentWithRedux(FIELD_OF_STUDY_DICTIONARY_ENTITY_EDIT_SCREEN, () => FieldOfStudyDictionaryEntityEditScreen, Provider, store)
+  Navigation.registerComponentWithRedux(CALENDAR_SCREEN, () => CalendarScreen, Provider, store)
+  Navigation.registerComponentWithRedux(CERTIFICATES_SCREEN, () => CertificatesScreen, Provider, store)
+  Navigation.registerComponentWithRedux(COURSES_SCREEN, () => CoursesScreen, Provider, store)
+  Navigation.registerComponentWithRedux(RANK_SCREEN, () => RankScreen, Provider, store)
   // ignite-jhipster-navigation-registration-needle
 
   Navigation.events().registerAppLaunchedListener(() => {
@@ -261,6 +273,7 @@ export const forgotPasswordScreen = () => Navigation.push('center', {
     }
   }
 })
+
 export const changePasswordScreen = () => Navigation.push('center', {
   component: {
     name: CHANGE_PASSWORD_SCREEN,
@@ -274,6 +287,7 @@ export const changePasswordScreen = () => Navigation.push('center', {
     }
   }
 })
+
 export const settingsScreen = () => Navigation.push('center', {
   component: {
     name: SETTINGS_SCREEN,
@@ -735,6 +749,62 @@ export const fieldOfStudyDictionaryEntityDetailScreen = (data) => Navigation.pus
       topBar: {
         title: {
           text: 'FieldOfStudyDictionaries',
+          color: Colors.snow
+        }
+      }
+    }
+  }
+})
+
+export const calendarScreen = () => Navigation.push('center', {
+  component: {
+    name: CALENDAR_SCREEN,
+    options: {
+      topBar: {
+        title: {
+          text: 'Kalendarz',
+          color: Colors.snow
+        }
+      }
+    }
+  }
+})
+
+export const coursesScreen = () => Navigation.push('center', {
+  component: {
+    name: COURSES_SCREEN,
+    options: {
+      topBar: {
+        title: {
+          text: 'Kursy',
+          color: Colors.snow
+        }
+      }
+    }
+  }
+})
+
+export const rankScreen = () => Navigation.push('center', {
+  component: {
+    name: RANK_SCREEN,
+    options: {
+      topBar: {
+        title: {
+          text: 'Ranking',
+          color: Colors.snow
+        }
+      }
+    }
+  }
+})
+
+export const certificatesScreen = () => Navigation.push('center', {
+  component: {
+    name: CERTIFICATES_SCREEN,
+    options: {
+      topBar: {
+        title: {
+          text: 'Certyfikaty',
           color: Colors.snow
         }
       }

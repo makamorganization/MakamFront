@@ -46,7 +46,7 @@ export default class LaunchScreen extends React.Component {
           <View style={styles.section} >
             <Image source={Images.ready} />
             <Text style={styles.sectionText}>
-              {'Welcome to your Ignite JHipster app.'}
+              {'MAKAM'}
             </Text>
           </View>
 

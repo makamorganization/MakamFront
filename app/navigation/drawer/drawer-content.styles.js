@@ -7,7 +7,8 @@ export default {
   },
   logo: {
     alignSelf: 'center',
-    height: 80,
-    width: 80
+    height: 120,
+    width: 70,
+    padding: 50
   }
 }

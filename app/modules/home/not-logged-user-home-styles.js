@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-import { Metrics, ApplicationStyles, Colors } from '../../shared/themes/'
+import { Metrics, ApplicationStyles, Colors } from '../../shared/themes'
 
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
@@ -11,11 +11,18 @@ export default StyleSheet.create({
   },
   logo: {
     marginTop: Metrics.doubleSection,
-    height: Metrics.images.logo,
-    width: Metrics.images.logo,
+    height: Metrics.images.logo * 1.2,
+    width: Metrics.images.logo * 1.2,
     resizeMode: 'contain'
   },
   centered: {
     alignItems: 'center'
+  },
+  linearGradient: {
+    flex: 1,
+    paddingLeft: 0,
+    paddingRight: 0,
+    paddingBottom: 100,
+    borderRadius: 0
   }
 })

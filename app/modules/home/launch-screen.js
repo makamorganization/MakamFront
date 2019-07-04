@@ -3,9 +3,13 @@ import { ScrollView, Text, Image, View } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 
 import { Images } from '../../shared/themes'
-import styles from './launch-screen.styles'
+import styles from './home-screen.styles'
+import { isLoggedIn } from '../../shared/reducers/account.reducer'
+import { connect } from 'react-redux'
+import LoggedUserHome from './logged-user-home'
+import NotLoggedUserHome from './not-logged-user-home'
 
-export default class LaunchScreen extends React.Component {
+class LaunchScreen extends React.Component {
   constructor (props) {
     super(props)
     Navigation.events().bindComponent(this)
@@ -39,19 +43,21 @@ export default class LaunchScreen extends React.Component {
       <View style={styles.mainContainer} testID='launchScreen'>
         <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
         <ScrollView style={styles.container}>
-          <View style={styles.centered}>
-            <Image source={Images.logoJhipster} style={styles.logo} />
-          </View>
-
-          <View style={styles.section} >
-            <Image source={Images.ready} />
-            <Text style={styles.sectionText}>
-              {'MAKAM'}
-            </Text>
-          </View>
-
+        {this.props.loggedIn ? 
+          <LoggedUserHome />
+          :
+          <NotLoggedUserHome />  
+        }
         </ScrollView>
       </View>
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    loggedIn: isLoggedIn(state.account)
+  }
+}
+
+export default connect(mapStateToProps)(LaunchScreen);

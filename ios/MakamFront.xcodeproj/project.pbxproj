@@ -58,6 +58,7 @@
 		E18463DF43AA419F94BA89B5 /* libRNVectorIcons-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE336DAE31CC4B7AA9F84DD4 /* libRNVectorIcons-tvOS.a */; };
 		A0B83DF0D61C41619971E287 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D19D13C1CBE4DAFB8EEECC6 /* libReactNativeNavigation.a */; };
 		8B2A4C35AF6B419E837F0C62 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CAD3B5E101D406F989DBB5E /* libBVLinearGradient.a */; };
+		E7846B00104C4229B0F84C4A /* PermanentMarker-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 88CB92D36870413AA6C10088 /* PermanentMarker-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -387,6 +388,7 @@
 		2D19D13C1CBE4DAFB8EEECC6 /* libReactNativeNavigation.a */ = {isa = PBXFileReference; name = "libReactNativeNavigation.a"; path = "libReactNativeNavigation.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		429B06E73F154C489E76260F /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; name = "BVLinearGradient.xcodeproj"; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		0CAD3B5E101D406F989DBB5E /* libBVLinearGradient.a */ = {isa = PBXFileReference; name = "libBVLinearGradient.a"; path = "libBVLinearGradient.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		88CB92D36870413AA6C10088 /* PermanentMarker-Regular.ttf */ = {isa = PBXFileReference; name = "PermanentMarker-Regular.ttf"; path = "../app/shared/assets/fonts/PermanentMarker-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -677,6 +679,7 @@
 				D12BC86F13B74E3BABAAF940 /* Octicons.ttf */,
 				52A0EE3F86394B06A55A332D /* SimpleLineIcons.ttf */,
 				3B3834AC18E94293B4FDBAD2 /* Zocial.ttf */,
+				88CB92D36870413AA6C10088 /* PermanentMarker-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1143,6 +1146,7 @@
 				B783F1306A5644F5A9CA7B76 /* Octicons.ttf in Resources */,
 				879761A23D9649F5BA7A238E /* SimpleLineIcons.ttf in Resources */,
 				1F46D66DB2A744E08B713F05 /* Zocial.ttf in Resources */,
+				E7846B00104C4229B0F84C4A /* PermanentMarker-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

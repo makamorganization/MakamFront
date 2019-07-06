@@ -134,5 +134,10 @@
       "metro.config.js"
     ]
   },
+  "rnpm": {
+    "assets": [
+      "./app/shared/assets/fonts"
+    ]
+  },
   "config": {}
 }

@@ -258,7 +258,7 @@ export const registerScreen = () => Navigation.push('center', {
     options: {
       topBar: {
         title: {
-          text: 'Zaloguj się',
+          text: 'Zarejestruj się',
           color: Colors.snow
         }
       }

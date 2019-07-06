@@ -6,6 +6,7 @@ import FacultyDictionaryActions from '../../entities/faculty-dictionary/faculty-
 import FieldOfFacultyDictionaryActions from '../../entities/field-of-study-dictionary/field-of-study-dictionary.reducer'
 import { Navigation } from 'react-native-navigation'
 import t from 'tcomb-form-native'
+import LinearGradient from 'react-native-linear-gradient'
 
 import RegisterActions from '../register/register.reducer'
 // Styles
@@ -61,7 +62,7 @@ class RegisterScreen extends React.Component {
             onSubmitEditing: () => this.refs.form.getComponent('studentCardNumber').refs.input.focus()
           },
           studentCardNumber: {
-            label: "Numer indeksu"
+            label: "Numer indeksu",
             returnKeyType: 'next',
             onSubmitEditing: () => this.refs.form.getComponent('studyYear').refs.input.focus()
           },
@@ -252,8 +253,6 @@ class RegisterScreen extends React.Component {
           }
         }
       }
-
-
     });
   }
 
@@ -277,20 +276,22 @@ class RegisterScreen extends React.Component {
 
   render () {
     return (
-      <KeyboardAwareScrollView>
-        <ScrollView style={styles.container}>
-          <Form
-            ref='form'
-            type={this.state.accountModel}
-            options={this.state.options}
-            value={this.state.accountValue}
-            onChange={this.accountChange}
-          />
-          <TouchableHighlight style={styles.button} onPress={this.submitUpdate} underlayColor='#99d9f4'>
-            <Text style={styles.buttonText}>Zarejestruj się</Text>
-          </TouchableHighlight>
-        </ScrollView>
-      </KeyboardAwareScrollView>
+      <LinearGradient colors={['#F0B0A5', '#EFE0A1']} style={styles.linearGradient}>
+        <KeyboardAwareScrollView>
+          <ScrollView style={styles.container}>
+            <Form
+              ref='form'
+              type={this.state.accountModel}
+              options={this.state.options}
+              value={this.state.accountValue}
+              onChange={this.accountChange}
+            />
+            <TouchableHighlight style={styles.button} onPress={this.submitUpdate} underlayColor='#99d9f4'>
+              <Text style={styles.buttonText}>Zarejestruj się</Text>
+            </TouchableHighlight>
+          </ScrollView>
+        </KeyboardAwareScrollView>
+      </LinearGradient>
     )
   }
 }

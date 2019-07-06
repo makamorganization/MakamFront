@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import styles from './not-logged-user-home-styles'
 import { Images } from '../../shared/themes'
-import { Text, Image, View } from 'react-native'
+import { Text, Image, View, TouchableHighlight } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient';
+import { loginScreen, registerScreen } from "../../navigation/layouts"
 
 export default class NotLoggedUserHome extends Component {
   constructor(props) {
@@ -19,13 +20,15 @@ export default class NotLoggedUserHome extends Component {
             </View>
 
             <View style={styles.section} >
-                <Image source={Images.ready} />
-                <Text style={styles.sectionText}>
-                    {'NIEZALOGOWANY'}
-                </Text>
+                <TouchableHighlight style={styles.button} onPress={loginScreen.bind(this)} underlayColor='#2e528f'>
+                    <Text style={styles.buttonText}>Logowanie</Text>
+                </TouchableHighlight>
+                
+                <TouchableHighlight style={styles.button} onPress={registerScreen.bind(this)} underlayColor='#2e528f'>
+                    <Text style={styles.buttonText}>Rejestracja</Text>
+                </TouchableHighlight>
             </View>
         </LinearGradient>
-     
     );
   }
 }

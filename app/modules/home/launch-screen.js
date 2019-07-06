@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, Text, Image, View } from 'react-native'
+import { ScrollView, Image, View } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 
 import { Images } from '../../shared/themes'

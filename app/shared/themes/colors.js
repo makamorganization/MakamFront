@@ -25,7 +25,8 @@ const colors = {
   text: '#E0D7E5',
   white: '#FFFFFF',
   customButton: '#17315c',
-  makamBackground: '#EFE0A1'
+  makamBackground: '#EFE0A1',
+  darkBrown: '#5c3202'
 }
 
 export default colors

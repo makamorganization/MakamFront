@@ -59,6 +59,10 @@
 		A0B83DF0D61C41619971E287 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D19D13C1CBE4DAFB8EEECC6 /* libReactNativeNavigation.a */; };
 		8B2A4C35AF6B419E837F0C62 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CAD3B5E101D406F989DBB5E /* libBVLinearGradient.a */; };
 		E7846B00104C4229B0F84C4A /* PermanentMarker-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 88CB92D36870413AA6C10088 /* PermanentMarker-Regular.ttf */; };
+		82DCB5EE5BE1444A8DDB28A3 /* fontawesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1E3B99FB1C1422AA23CF9ED /* fontawesome.ttf */; };
+		CCAAB4D4906244EFBE8703E0 /* fa-solid-900.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BAA436230FFF44CBA565E0B3 /* fa-solid-900.ttf */; };
+		FB1A84DA9A8D4BD48D10CE6E /* fa-brands-400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8576828F9E1641E3A21936EE /* fa-brands-400.ttf */; };
+		4889AC62C6AD458DA299EA23 /* fa-regular-400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86132BF6E1884C0587060344 /* fa-regular-400.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -389,6 +393,10 @@
 		429B06E73F154C489E76260F /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; name = "BVLinearGradient.xcodeproj"; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		0CAD3B5E101D406F989DBB5E /* libBVLinearGradient.a */ = {isa = PBXFileReference; name = "libBVLinearGradient.a"; path = "libBVLinearGradient.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		88CB92D36870413AA6C10088 /* PermanentMarker-Regular.ttf */ = {isa = PBXFileReference; name = "PermanentMarker-Regular.ttf"; path = "../app/shared/assets/fonts/PermanentMarker-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C1E3B99FB1C1422AA23CF9ED /* fontawesome.ttf */ = {isa = PBXFileReference; name = "fontawesome.ttf"; path = "../app/shared/assets/fonts/fontawesome.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		BAA436230FFF44CBA565E0B3 /* fa-solid-900.ttf */ = {isa = PBXFileReference; name = "fa-solid-900.ttf"; path = "../app/shared/assets/fonts/fa-solid-900.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8576828F9E1641E3A21936EE /* fa-brands-400.ttf */ = {isa = PBXFileReference; name = "fa-brands-400.ttf"; path = "../app/shared/assets/fonts/fa-brands-400.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		86132BF6E1884C0587060344 /* fa-regular-400.ttf */ = {isa = PBXFileReference; name = "fa-regular-400.ttf"; path = "../app/shared/assets/fonts/fa-regular-400.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -680,6 +688,10 @@
 				52A0EE3F86394B06A55A332D /* SimpleLineIcons.ttf */,
 				3B3834AC18E94293B4FDBAD2 /* Zocial.ttf */,
 				88CB92D36870413AA6C10088 /* PermanentMarker-Regular.ttf */,
+				C1E3B99FB1C1422AA23CF9ED /* fontawesome.ttf */,
+				BAA436230FFF44CBA565E0B3 /* fa-solid-900.ttf */,
+				8576828F9E1641E3A21936EE /* fa-brands-400.ttf */,
+				86132BF6E1884C0587060344 /* fa-regular-400.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1147,6 +1159,10 @@
 				879761A23D9649F5BA7A238E /* SimpleLineIcons.ttf in Resources */,
 				1F46D66DB2A744E08B713F05 /* Zocial.ttf in Resources */,
 				E7846B00104C4229B0F84C4A /* PermanentMarker-Regular.ttf in Resources */,
+				82DCB5EE5BE1444A8DDB28A3 /* fontawesome.ttf in Resources */,
+				CCAAB4D4906244EFBE8703E0 /* fa-solid-900.ttf in Resources */,
+				FB1A84DA9A8D4BD48D10CE6E /* fa-brands-400.ttf in Resources */,
+				4889AC62C6AD458DA299EA23 /* fa-regular-400.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -45,6 +45,31 @@ export function * getMyCourses (api, action) {
   }
 }
 
+export function * signUpForCourse (api, action) {
+  const {courseId} = action
+  const apiCall = call(api.signUpForCourse, courseId)
+  const response = yield call(callApi, apiCall)
+
+  if(response.ok) {
+    yield put(CourseActions.signUpForCourseSuccess())
+  } else {
+    yield put(CourseActions.signUpForCourseFailure(response.data))
+  }
+}
+
+export function * signOutFromCourse (api, action) {
+  const {courseId} = action
+  const apiCall = call(api.signOutFromCourse, courseId)
+  const response = yield call(callApi, apiCall)
+
+  if (response.ok) {
+    yield put(CourseActions.signOutFromCourseSuccess())
+  } else {
+    yield put(CourseActions.signOutFromCourseFailure(response.data))
+  }
+
+}
+
 export function * updateCourse (api, action) {
   const { course } = action
   // make the call to the api

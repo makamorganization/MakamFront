@@ -9,18 +9,25 @@ const { Types, Creators } = createActions({
   courseUpdateRequest: ['course'],
   courseDeleteRequest: ['courseId'],
   myCoursesAllRequest: ['options'],
+  signUpForCourse: ['courseId'],
+  signOutFromCourse: ['courseId'],
+
 
   courseSuccess: ['course'],
   courseAllSuccess: ['courses'],
   courseUpdateSuccess: ['course'],
   courseDeleteSuccess: [],
   myCoursesAllSuccess: ['myCourses'],
+  signUpForCourseSuccess: [],
+  signOutFromCourseSuccess: [],
 
   courseFailure: ['error'],
   courseAllFailure: ['error'],
   courseUpdateFailure: ['error'],
   courseDeleteFailure: ['error'],
-  myCoursesAllFailure: ['error']
+  myCoursesAllFailure: ['error'],
+  signUpForCourseFailure: ['error'],
+  signOutFromCourseFailure: ['error']
 })
 
 export const CourseTypes = Types
@@ -34,6 +41,8 @@ export const INITIAL_STATE = Immutable({
   fetchingMyCourses: null,
   updating: null,
   deleting: null,
+  signingUpForCourse: null,
+  signingOutFromCourse: null,
   course: null,
   courses: null,
   myCourses: null,
@@ -41,6 +50,8 @@ export const INITIAL_STATE = Immutable({
   errorAll: null,
   errorUpdating: null,
   errorDeleting: null,
+  errorSigningUpForCourse: null,
+  errorSigningOutFromCourse: null,
   errorMyCourses: null
 })
 
@@ -71,6 +82,16 @@ export const myCoursesAllRequest = (state) =>
 export const updateRequest = (state) =>
   state.merge({
     updating: true
+  })
+
+export const signUpForCourse = (state) =>
+  state.merge({
+    signingUpForCourse: true
+  })
+
+export const signOutFromCourse = (state) =>
+  state.merge({
+    signingOutFromCourse: true
   })
 // request to delete from an api
 export const deleteRequest = (state) =>
@@ -123,6 +144,20 @@ export const deleteSuccess = (state) => {
   })
 }
 
+export const signUpForCourseSuccess = (state) => {
+  return state.merge({
+    signingUpForCourse: false,
+    errorSigningUpForCourse: null,
+  })
+}
+
+export const signOutFromCourseSuccess = (state) => {
+  return state.merge({
+    signingOutFromCourse: false,
+    errorSingingOutFromCourse: null
+  })
+}
+
 // Something went wrong fetching a single entity.
 export const failure = (state, action) => {
   const { error } = action
@@ -170,6 +205,22 @@ export const deleteFailure = (state, action) => {
   })
 }
 
+export const signUpForCourseFailure = (state, action) => {
+  const { error } = action
+  return state.merge({
+    signingUpForCourse: false,
+    errorSigningUpForCourse: error,
+  })
+}
+
+export const signOutFromCourseFailure = (state, action) => {
+  const { error } = action
+  return state.merge({
+    signingOutFromCourse: false,
+    errorSigningOutFromCourse: error
+  })
+}
+
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -178,6 +229,8 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.COURSE_UPDATE_REQUEST]: updateRequest,
   [Types.COURSE_DELETE_REQUEST]: deleteRequest,
   [Types.MY_COURSES_ALL_REQUEST]: myCoursesAllRequest,
+  [Types.SIGN_UP_FOR_COURSE]: signUpForCourse,
+  [Types.SIGN_OUT_FROM_COURSE]: signOutFromCourse,
 
 
   [Types.COURSE_SUCCESS]: success,
@@ -185,10 +238,14 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.COURSE_UPDATE_SUCCESS]: updateSuccess,
   [Types.COURSE_DELETE_SUCCESS]: deleteSuccess,
   [Types.MY_COURSES_ALL_SUCCESS]: myCoursesAllSuccess,
+  [Types.SIGN_UP_FOR_COURSE_SUCCESS]: signUpForCourseSuccess,
+  [Types.SIGN_OUT_FROM_COURSE_SUCCESS]: signOutFromCourseSuccess,
 
   [Types.COURSE_FAILURE]: failure,
   [Types.COURSE_ALL_FAILURE]: allFailure,
   [Types.COURSE_UPDATE_FAILURE]: updateFailure,
   [Types.COURSE_DELETE_FAILURE]: deleteFailure,
-  [Types.MY_COURSES_ALL_FAILURE]: myCoursesAllFailure
+  [Types.MY_COURSES_ALL_FAILURE]: myCoursesAllFailure,
+  [Types.SIGN_UP_FOR_COURSE_FAILURE]: signUpForCourseFailure,
+  [Types.SIGN_OUT_FROM_COURSE_FAILURE]: signOutFromCourseFailure
 })

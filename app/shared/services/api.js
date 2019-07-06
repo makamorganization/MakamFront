@@ -58,6 +58,8 @@ const create = (baseURL = AppConfig.apiUrl) => {
   const createCourse = (course) => api.post('api/courses', course)
   const updateCourse = (course) => api.put('api/courses', course)
   const deleteCourse = (courseId) => api.delete('api/courses/' + courseId)
+  const signUpForCourse = (courseId) => api.put('api/courses/signUpForCourse/' + courseId)
+  const signOutFromCourse = (courseId) => api.put('api/courses/signOutFromCourse/' + courseId)
 
   const getUserDetail = (userDetailId) => api.get('api/user-details/' + userDetailId)
   const getUserDetails = (options) => api.get('api/user-details', options)
@@ -129,6 +131,8 @@ const create = (baseURL = AppConfig.apiUrl) => {
     getMyCourses,
     getCourse,
     deleteCourse,
+    signUpForCourse,
+    signOutFromCourse,
 
     createUserDetail,
     updateUserDetail,

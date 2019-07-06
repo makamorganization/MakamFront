@@ -23,5 +23,14 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     fontSize: Fonts.size.medium,
     marginVertical: Metrics.baseMargin
+  },
+  disabled: {
+    marginTop: 20,
+    height: 45,
+    borderRadius: 5,
+    marginHorizontal: Metrics.section,
+    marginVertical: Metrics.baseMargin,
+    backgroundColor: Colors.charcoal,
+    justifyContent: 'center'
   }
 })

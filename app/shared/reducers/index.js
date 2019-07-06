@@ -10,6 +10,7 @@ export const reducers = combineReducers({
   appState: require('./app-state.reducer').reducer,
   users: require('./user.reducer').reducer,
   courses: require('../../modules/entities/course/course.reducer').reducer,
+  myCourses: require('../../modules/entities/course/course.reducer').reducer,
   userDetails: require('../../modules/entities/user-details/user-details.reducer').reducer,
   userDetailsExtras: require('../../modules/entities/user-details-extras/user-details-extras.reducer').reducer,
   courseParticipants: require('../../modules/entities/course-participant/course-participant.reducer').reducer,

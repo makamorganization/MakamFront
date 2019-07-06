@@ -41,7 +41,7 @@ class RegisterScreen extends React.Component {
             onSubmitEditing: () => this.refs.form.getComponent('firstName').refs.input.focus()
           },
           firstName: {
-            label: 'Imie',
+            label: 'Imię',
             returnKeyType: 'next',
             onSubmitEditing: () => this.refs.form.getComponent('lastName').refs.input.focus()
           },
@@ -51,36 +51,44 @@ class RegisterScreen extends React.Component {
             onSubmitEditing: () => this.refs.form.getComponent('facultyId').refs.input.focus()
           },
           facultyId: {
+            label: "Wydział studiów",
             returnKeyType: 'next',
             onSubmitEditing: () => this.refs.form.getComponent('fieldOfStudyId').refs.input.focus()
           },
           fieldOfStudyId: {
+            label: "Kierunek studiów",
             returnKeyType: 'next',
             onSubmitEditing: () => this.refs.form.getComponent('studentCardNumber').refs.input.focus()
           },
           studentCardNumber: {
+            label: "Numer indeksu"
             returnKeyType: 'next',
             onSubmitEditing: () => this.refs.form.getComponent('studyYear').refs.input.focus()
           },
           studyYear: {
+            label: "Rok studiów",
             returnKeyType: 'next',
             onSubmitEditing: () => this.refs.form.getComponent('telephoneNumber').refs.input.focus()
           },
           telephoneNumber: {
+            label: "Numer telefonu",
             returnKeyType: 'next',
             onSubmitEditing: () => this.refs.form.getComponent('password').refs.input.focus()
           },
           password: {
+            label: "Hasło",
             secureTextEntry: true,
             returnKeyType: 'next',
             onSubmitEditing: () => this.refs.form.getComponent('confirmPassword').refs.input.focus()
           },
           confirmPassword: {
+            label: "Potwierdź hasło",
             secureTextEntry: true,
             returnKeyType: 'next',
             onSubmitEditing: () => this.refs.form.getComponent('email').refs.input.focus()
           },
           email: {
+            label: "E-mail",
             returnKeyType: 'done',
             onSubmitEditing: () => this.submitUpdate()
           },
@@ -122,7 +130,7 @@ class RegisterScreen extends React.Component {
     const value = this.refs.form.getValue()
     if (value) { // if validation fails, value will be null
       if (value.password !== value.confirmPassword) {
-        Alert.alert('Error', 'Passwords do not match', [{ text: 'OK' }])
+        Alert.alert('Błąd', 'Hasła się nie zgadzają', [{ text: 'OK' }])
         return
       }
       this.props.register(value)
@@ -139,7 +147,7 @@ class RegisterScreen extends React.Component {
           success: true
         })
         Navigation.popToRoot(this.props.componentId)
-        Alert.alert('Registration Successful', 'Please check your email', [{ text: 'OK' }])
+        Alert.alert('Rejstracja ukończona', 'Proszę sprawdzić e-mail', [{ text: 'OK' }])
       }
     }
   }
@@ -188,7 +196,7 @@ class RegisterScreen extends React.Component {
             onSubmitEditing: () => this.refs.form.getComponent('firstName').refs.input.focus()
           },
           firstName: {
-            label: 'Imie',
+            label: 'Imię',
             returnKeyType: 'next',
             onSubmitEditing: () => this.refs.form.getComponent('lastName').refs.input.focus()
           },
@@ -198,12 +206,12 @@ class RegisterScreen extends React.Component {
             onSubmitEditing: () => this.refs.form.getComponent('facultyId').refs.input.focus()
           },
           facultyId: {
-            label: 'Wydział',
+            label: 'Wydział studiów',
             returnKeyType: 'next',
             onSubmitEditing: () => this.refs.form.getComponent('fieldOfStudyId').refs.input.focus()
           },
           fieldOfStudyId: {
-            label: 'Kierunek',
+            label: 'Kierunek studiów',
             returnKeyType: 'next',
             onSubmitEditing: () => this.refs.form.getComponent('studentCardNumber').refs.input.focus()
           },
@@ -229,7 +237,7 @@ class RegisterScreen extends React.Component {
             onSubmitEditing: () => this.refs.form.getComponent('confirmPassword').refs.input.focus()
           },
           confirmPassword: {
-            label: 'Powtórz hasło',
+            label: 'Potwierdź hasło',
             secureTextEntry: true,
             returnKeyType: 'next',
             onSubmitEditing: () => this.refs.form.getComponent('email').refs.input.focus()
@@ -279,7 +287,7 @@ class RegisterScreen extends React.Component {
             onChange={this.accountChange}
           />
           <TouchableHighlight style={styles.button} onPress={this.submitUpdate} underlayColor='#99d9f4'>
-            <Text style={styles.buttonText}>Register</Text>
+            <Text style={styles.buttonText}>Zarejestruj się</Text>
           </TouchableHighlight>
         </ScrollView>
       </KeyboardAwareScrollView>

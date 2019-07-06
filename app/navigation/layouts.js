@@ -258,7 +258,7 @@ export const registerScreen = () => Navigation.push('center', {
     options: {
       topBar: {
         title: {
-          text: 'Sign Up',
+          text: 'Zaloguj się',
           color: Colors.snow
         }
       }
@@ -272,7 +272,7 @@ export const forgotPasswordScreen = () => Navigation.push('center', {
     options: {
       topBar: {
         title: {
-          text: 'Forgot Password',
+          text: 'Zapomniane hasło',
           color: Colors.snow
         }
       }
@@ -286,7 +286,7 @@ export const changePasswordScreen = () => Navigation.push('center', {
     options: {
       topBar: {
         title: {
-          text: 'Change Password',
+          text: 'Zmiana hasła',
           color: Colors.snow
         }
       }
@@ -300,7 +300,7 @@ export const settingsScreen = () => Navigation.push('center', {
     options: {
       topBar: {
         title: {
-          text: 'Settings',
+          text: 'Ustawienia',
           color: Colors.snow
         }
       }
@@ -349,7 +349,7 @@ export const myCoursesEntityScreen = () => Navigation.push('center',{
     options: {
       topBar: {
         title: {
-          text: 'MyCourses',
+          text: 'Moje kursy',
           color: Colors.snow
         }
       }

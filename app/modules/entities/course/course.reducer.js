@@ -8,16 +8,19 @@ const { Types, Creators } = createActions({
   courseAllRequest: ['options'],
   courseUpdateRequest: ['course'],
   courseDeleteRequest: ['courseId'],
+  myCoursesAllRequest: ['options'],
 
   courseSuccess: ['course'],
   courseAllSuccess: ['courses'],
   courseUpdateSuccess: ['course'],
   courseDeleteSuccess: [],
+  myCoursesAllSuccess: ['myCourses'],
 
   courseFailure: ['error'],
   courseAllFailure: ['error'],
   courseUpdateFailure: ['error'],
-  courseDeleteFailure: ['error']
+  courseDeleteFailure: ['error'],
+  myCoursesAllFailure: ['error']
 })
 
 export const CourseTypes = Types
@@ -28,14 +31,17 @@ export default Creators
 export const INITIAL_STATE = Immutable({
   fetchingOne: null,
   fetchingAll: null,
+  fetchingMyCourses: null,
   updating: null,
   deleting: null,
   course: null,
   courses: null,
+  myCourses: null,
   errorOne: null,
   errorAll: null,
   errorUpdating: null,
-  errorDeleting: null
+  errorDeleting: null,
+  errorMyCourses: null
 })
 
 /* ------------- Reducers ------------- */
@@ -52,6 +58,13 @@ export const allRequest = (state) =>
   state.merge({
     fetchingAll: true,
     courses: null
+  })
+
+
+export const myCoursesAllRequest = (state) =>
+  state.merge({
+    fetchingMyCourses: true,
+    myCourses: null
   })
 
 // request to update from an api
@@ -81,6 +94,15 @@ export const allSuccess = (state, action) => {
     fetchingAll: false,
     errorAll: null,
     courses
+  })
+}
+
+export const myCoursesAllSuccess = (state,action) => {
+  const { myCourses } = action
+  return state.merge({
+    fetchingMyCourses: false,
+    errorAll: null,
+    myCourses
   })
 }
 // successful api update
@@ -128,6 +150,16 @@ export const updateFailure = (state, action) => {
     course: state.course
   })
 }
+
+export const myCoursesAllFailure = (state,action) => {
+  const { errorMyCourses } = action
+  return state.merge({
+    fetchingAll: false,
+    errorAll: error,
+    courses: null
+  })
+}
+
 // Something went wrong deleting.
 export const deleteFailure = (state, action) => {
   const { error } = action
@@ -145,14 +177,18 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.COURSE_ALL_REQUEST]: allRequest,
   [Types.COURSE_UPDATE_REQUEST]: updateRequest,
   [Types.COURSE_DELETE_REQUEST]: deleteRequest,
+  [Types.MY_COURSES_ALL_REQUEST]: myCoursesAllRequest,
+
 
   [Types.COURSE_SUCCESS]: success,
   [Types.COURSE_ALL_SUCCESS]: allSuccess,
   [Types.COURSE_UPDATE_SUCCESS]: updateSuccess,
   [Types.COURSE_DELETE_SUCCESS]: deleteSuccess,
+  [Types.MY_COURSES_ALL_SUCCESS]: myCoursesAllSuccess,
 
   [Types.COURSE_FAILURE]: failure,
   [Types.COURSE_ALL_FAILURE]: allFailure,
   [Types.COURSE_UPDATE_FAILURE]: updateFailure,
-  [Types.COURSE_DELETE_FAILURE]: deleteFailure
+  [Types.COURSE_DELETE_FAILURE]: deleteFailure,
+  [Types.MY_COURSES_ALL_FAILURE]: myCoursesAllFailure
 })

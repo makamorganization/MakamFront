@@ -31,7 +31,7 @@ import { forgotPassword } from '../../modules/account/password-reset/forgot-pass
 import { changePassword } from '../../modules/account/password/change-password.sagas'
 import { getAccount, updateAccount } from '../../shared/sagas/account.sagas'
 import { getUser, getUsers, updateUser, deleteUser } from '../../shared/sagas/user.sagas'
-import { getCourse, getCourses, updateCourse, deleteCourse } from '../../modules/entities/course/course.sagas'
+import { getCourse, getCourses, getMyCourses, updateCourse, deleteCourse } from '../../modules/entities/course/course.sagas'
 import { getUserDetail, getUserDetails, updateUserDetail, deleteUserDetail } from '../../modules/entities/user-details/user-details.sagas'
 import { getUserDetailsExtra, getUserDetailsExtras, updateUserDetailsExtra, deleteUserDetailsExtra } from '../../modules/entities/user-details-extras/user-details-extras.sagas'
 import { getCourseParticipant, getCourseParticipants, updateCourseParticipant, deleteCourseParticipant } from '../../modules/entities/course-participant/course-participant.sagas'
@@ -64,6 +64,7 @@ export default function * root () {
 
     takeLatest(CourseTypes.COURSE_REQUEST, getCourse, api),
     takeLatest(CourseTypes.COURSE_ALL_REQUEST, getCourses, api),
+    takeLatest(CourseTypes.MY_COURSES_ALL_REQUEST,getMyCourses,api),
     takeLatest(CourseTypes.COURSE_UPDATE_REQUEST, updateCourse, api),
     takeLatest(CourseTypes.COURSE_DELETE_REQUEST, deleteCourse, api),
 

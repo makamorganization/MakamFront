@@ -32,6 +32,19 @@ export function * getCourses (api, action) {
   }
 }
 
+export function * getMyCourses (api, action) {
+  const { options } = action
+  const apiCall = call(api.getMyCourses, options)
+  const response = yield call(callApi, apiCall)
+
+
+  if (response.ok) {
+    yield put(CourseActions.myCoursesAllSuccess(response.data))
+  } else{
+    yield put(CourseActions.myCoursesAllFailure(response.data))
+  }
+}
+
 export function * updateCourse (api, action) {
   const { course } = action
   // make the call to the api

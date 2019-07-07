@@ -36,6 +36,7 @@
     "ramda": "0.26.1",
     "react": "16.8.3",
     "react-native": "0.59.3",
+    "react-native-calendars": "^1.195.0",
     "react-native-keyboard-aware-scroll-view": "0.8.0",
     "react-native-linear-gradient": "^2.5.4",
     "react-native-navigation": "2.16.0",

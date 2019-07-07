@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
 import {FlatList, Text, TouchableOpacity, View} from 'react-native'
 import {courseDetailScreen, myCoursesEntityScreen} from "../../navigation/layouts";
@@ -7,6 +7,7 @@ import styles from './courses-screen.style'
 import CourseActions from '../entities/course/course.reducer'
 import AlertMessage from '../../shared/components/alert-message/alert-message'
 import RoundedButton from "../../shared/components/rounded-button/rounded-button";
+import LinearGradient from 'react-native-linear-gradient'
 
 class CoursesScreen extends React.PureComponent {
   constructor (props) {
@@ -28,8 +29,7 @@ class CoursesScreen extends React.PureComponent {
   }
 
 
-  renderRow({ item}) {
-
+  renderRow({ item }) {
     return (
       <TouchableOpacity onPress={courseDetailScreen.bind(this,{courseId: item.id})}>
         <View style={styles.row}>
@@ -80,19 +80,21 @@ class CoursesScreen extends React.PureComponent {
 
     render() {
         return (
-          <View style={styles.container} testID='coursesScreen'>
-            <RoundedButton text='Moje kursy' onPress={myCoursesEntityScreen.bind(this)}/>
-            <FlatList
-              data={this.state.dataObjects}
-              renderItem={this.renderRow}
-              keyExtractor={(item, index) => index.toString()}
-              initialNumToRender={this.onScreenWorth}
-              onEndReached={this.handleLoadMore}
-              onEndThreshold={100}
-              ListEmptyComponent={this.readerEmpty}
-              ItemSeparatorComponent={this.renderSeparator}
-            />
-          </View>
+          <LinearGradient colors={['#F0B0A5', '#EFE0A1']} style={styles.linearGradient}>
+            <View style={styles.container} testID='coursesScreen'>
+              <RoundedButton text='Moje kursy' onPress={myCoursesEntityScreen.bind(this)}/>
+              <FlatList
+                data={this.state.dataObjects}
+                renderItem={this.renderRow}
+                keyExtractor={(item, index) => index.toString()}
+                initialNumToRender={this.onScreenWorth}
+                onEndReached={this.handleLoadMore}
+                onEndThreshold={100}
+                ListEmptyComponent={this.readerEmpty}
+                ItemSeparatorComponent={this.renderSeparator}
+              />
+            </View>
+          </LinearGradient>
         );
     }
 }

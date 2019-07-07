@@ -6,12 +6,15 @@ export default StyleSheet.create({
   ...ApplicationStyles.screen,
   container: {
     flex: 1,
-    backgroundColor: Colors.background
+    backgroundColor: Colors.transparent
   },
   row: {
     flex: 1,
     height: 80,
-    backgroundColor: Colors.steel,
+    backgroundColor: Colors.cloud,
+    borderColor: Colors.darkBrown,
+    borderWidth: 1,
+    borderRadius: 10,
     marginVertical: Metrics.smallMargin,
     justifyContent: 'center'
   },
@@ -26,9 +29,12 @@ export default StyleSheet.create({
     fontSize: 20,
     fontWeight:'normal',
     textAlign: 'center',
-    color: Colors.banner
+    color: Colors.charcoal
   },
   listContent: {
     marginTop: Metrics.baseMargin
+  },
+  linearGradient: {
+    height: Metrics.screenHeight
   }
 })

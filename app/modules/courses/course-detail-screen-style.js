@@ -14,7 +14,7 @@ export default StyleSheet.create({
     borderRadius: 5,
     marginHorizontal: Metrics.section,
     marginVertical: Metrics.baseMargin,
-    backgroundColor: Colors.fire,
+    backgroundColor: Colors.customButton,
     justifyContent: 'center'
   },
   buttonText: {
@@ -32,5 +32,13 @@ export default StyleSheet.create({
     marginVertical: Metrics.baseMargin,
     backgroundColor: Colors.charcoal,
     justifyContent: 'center'
+  },
+  linearGradient: {
+    height: Metrics.screenHeight
+  },
+  text: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: Colors.coal
   }
 })

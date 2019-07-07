@@ -15,30 +15,42 @@ export default class LoggedUserHome extends Component {
     return (
         <LinearGradient colors={['#F0B0A5', '#EFE0A1']} style={styles.linearGradient}>
             <View style={styles.iconsWrapper}>
-                <TouchableOpacity style={styles.icon} onPress={calendarScreen.bind(this)}>
-                    <Text style={styles.fontawesome}>&#xf073;</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.icon} onPress={rankScreen.bind(this)}>
-                    <Text style={styles.fontawesome}>&#xf091;</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.icon} onPress={calendarScreen.bind(this)}>
-                    <Text style={styles.fontawesome}>&#xf1fa;</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.icon} onPress={changePasswordScreen.bind(this)}>
-                    <Text style={styles.fontawesome}>&#xf362;</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.icon} onPress={certificatesScreen.bind(this)}>
-                    <Text style={styles.fontawesome}>&#xf573;</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.icon} onPress={coursesScreen.bind(this)}>
-                    <Text style={styles.fontawesome}>&#xf2b5;</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.icon} onPress={calendarScreen.bind(this)}>
-                    <Text style={styles.fontawesome}>&#xf518;</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.icon} onPress={settingsScreen.bind(this)}>
-                    <Text style={styles.fontawesome}>&#xf7d9;</Text>
-                </TouchableOpacity>
+                <View style={styles.iconsBlock}>
+                    <TouchableOpacity style={styles.icon} onPress={calendarScreen.bind(this)}>
+                        <Text style={styles.fontawesome}>&#xf073;</Text>
+                    </TouchableOpacity>
+                
+                    <TouchableOpacity style={styles.icon} onPress={coursesScreen.bind(this)}>
+                        <Text style={styles.fontawesome}>&#xf2b5;</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.iconsBlock}>
+                    <TouchableOpacity style={styles.icon} onPress={rankScreen.bind(this)}>
+                        <Text style={styles.fontawesome}>&#xf091;</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.icon} onPress={certificatesScreen.bind(this)}>
+                        <Text style={styles.fontawesome}>&#xf573;</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.iconsBlock}>
+                    <TouchableOpacity style={styles.icon} onPress={calendarScreen.bind(this)}>
+                        <Text style={styles.fontawesome}>&#xf1fa;</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.icon} onPress={calendarScreen.bind(this)}>
+                        <Text style={styles.fontawesome}>&#xf518;</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.iconsBlock}>
+                    <TouchableOpacity style={styles.icon} onPress={changePasswordScreen.bind(this)}>
+                        <Text style={styles.fontawesome}>&#xf362;</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.icon} onPress={settingsScreen.bind(this)}>
+                        <Text style={styles.fontawesome}>&#xf7d9;</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </LinearGradient> 
     );

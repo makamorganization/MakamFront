@@ -23,7 +23,13 @@ export default StyleSheet.create({
   },
   iconsWrapper: {
       flexWrap: 'wrap',
-      alignSelf: 'center'
+      alignSelf: 'center',
+      flex: 1
+  },
+  iconsBlock: {
+    flexDirection: 'row',
+    alignSelf: 'center',
+    flex: 1
   },
   icon: {
     alignContent: 'stretch',
@@ -31,14 +37,13 @@ export default StyleSheet.create({
     borderColor: Colors.darkBrown,
     backgroundColor: Colors.cloud,
     borderRadius: 10,
-    height: 120,
-    width: 150,
+    flex: 1,
     margin: 10,
     alignContent: 'center'
   },
   fontawesome: {
     fontFamily: 'fa-solid-900',
-    fontSize: 100,
+    fontSize: Metrics.screenHeight / 6.3,
     alignSelf: 'center',
     color: Colors.coal
   }

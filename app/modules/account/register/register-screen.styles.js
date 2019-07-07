@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-import { ApplicationStyles, Colors } from '../../../shared/themes'
+import { ApplicationStyles, Colors, Metrics } from '../../../shared/themes'
 
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
@@ -15,12 +15,15 @@ export default StyleSheet.create({
   },
   button: {
     height: 36,
-    backgroundColor: Colors.jhipsterBlue,
-    borderColor: Colors.jhipsterBlue,
+    backgroundColor: Colors.customButton,
+    borderColor: Colors.customButton,
     borderWidth: 1,
     borderRadius: 8,
     marginBottom: 10,
     alignSelf: 'stretch',
     justifyContent: 'center'
+  },
+  linearGradient: {
+    height: Metrics.screenHeight - 80
   }
 })

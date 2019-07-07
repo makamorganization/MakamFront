@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Alert, Image, View, ScrollView, Text, TextInput, TouchableOpacity } from 'react-native'
+import { Alert, View, ScrollView, Text, TextInput, TouchableOpacity } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import { connect } from 'react-redux'
 
 import styles from './login-screen.styles'
-import { Images, Metrics } from '../../shared/themes'
+import { Metrics } from '../../shared/themes'
 import LoginActions from './login.reducer'
+import LinearGradient from 'react-native-linear-gradient'
 
 class LoginScreen extends React.Component {
   static propTypes = {
@@ -27,7 +28,6 @@ class LoginScreen extends React.Component {
   }
 
   componentWillReceiveProps (newProps) {
-    // Did the login attempt complete?
     if (!newProps.fetching) {
       if (newProps.error) {
         if (newProps.error === 'WRONG') {
@@ -41,7 +41,7 @@ class LoginScreen extends React.Component {
 
   handlePressLogin = () => {
     const { username, password } = this.state
-    // attempt a login - a saga is listening to pick it up from here.
+    
     this.props.attemptLogin(username, password)
   }
   handlePressCancel = () => {
@@ -63,11 +63,11 @@ class LoginScreen extends React.Component {
     const editable = !fetching
     const textInputStyle = editable ? styles.textInput : styles.textInputReadonly
     return (
+      <LinearGradient colors={['#F0B0A5', '#EFE0A1']} style={styles.linearGradient}>
       <ScrollView contentContainerStyle={{ justifyContent: 'center' }} style={[styles.container, { height: this.state.visibleHeight }]} keyboardShouldPersistTaps='always'>
-        <Image source={Images.logoLogin} style={[styles.topLogo, this.state.topLogo]} />
-        <View style={styles.form}>
+        <Text style={styles.topLogo}>MAKAM</Text>
           <View style={styles.row}>
-            <Text style={styles.rowLabel}>Username</Text>
+            <Text style={styles.rowLabel}>Login</Text>
             <TextInput
               ref='username'
               testID='loginScreenUsername'
@@ -81,11 +81,11 @@ class LoginScreen extends React.Component {
               onChangeText={this.handleChangeUsername}
               underlineColorAndroid='transparent'
               onSubmitEditing={() => this.refs.password.focus()}
-              placeholder='Username' />
+              placeholder='Login' />
           </View>
 
           <View style={styles.row}>
-            <Text style={styles.rowLabel}>Password</Text>
+            <Text style={styles.rowLabel}>Hasło</Text>
             <TextInput
               ref='password'
               testID='loginScreenPassword'
@@ -100,23 +100,18 @@ class LoginScreen extends React.Component {
               onChangeText={this.handleChangePassword}
               underlineColorAndroid='transparent'
               onSubmitEditing={this.handlePressLogin}
-              placeholder='Password' />
+              placeholder='Hasło' />
           </View>
 
           <View style={[styles.loginRow]}>
             <TouchableOpacity testID='loginScreenLoginButton' style={styles.loginButtonWrapper} onPress={this.handlePressLogin}>
               <View style={styles.loginButton}>
-                <Text style={styles.loginText}>Sign In</Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity testID='loginScreenCancelButton' style={styles.loginButtonWrapper} onPress={this.handlePressCancel}>
-              <View style={styles.loginButton}>
-                <Text style={styles.loginText}>Cancel</Text>
+                <Text style={styles.loginText}>Zaloguj się</Text>
               </View>
             </TouchableOpacity>
           </View>
-        </View>
       </ScrollView>
+      </LinearGradient>
     )
   }
 }

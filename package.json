@@ -37,6 +37,7 @@
     "react": "16.8.3",
     "react-native": "0.59.3",
     "react-native-keyboard-aware-scroll-view": "0.8.0",
+    "react-native-linear-gradient": "^2.5.4",
     "react-native-navigation": "2.16.0",
     "react-native-vector-icons": "6.4.2",
     "react-redux": "6.0.1",
@@ -131,6 +132,11 @@
     "ignore": [
       "ignite/**",
       "metro.config.js"
+    ]
+  },
+  "rnpm": {
+    "assets": [
+      "./app/shared/assets/fonts"
     ]
   },
   "config": {}

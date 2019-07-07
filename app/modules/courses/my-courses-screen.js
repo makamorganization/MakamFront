@@ -6,6 +6,7 @@ import styles from "./courses-screen.style";
 import CourseActions from '../entities/course/course.reducer'
 import { Navigation } from 'react-native-navigation'
 import AlertMessage from "../../shared/components/alert-message/alert-message";
+import LinearGradient from 'react-native-linear-gradient'
 
 class MyCoursesScreen extends React.PureComponent {
   constructor(props) {
@@ -41,7 +42,7 @@ class MyCoursesScreen extends React.PureComponent {
 
   readerEmpty = () => {
    console.log(this.props);
-    return <AlertMessage title='Nie znaleziono kursów' show={!this.props.fetching}/>
+    return <AlertMessage title='Nie znaleziono kursów' show={!this.props.fetching} />
   }
 
   onScreenWorth = 20
@@ -79,18 +80,20 @@ class MyCoursesScreen extends React.PureComponent {
 
   render() {
     return(
-      <View style={styles.container} testId='myCoursesScreen'>
-        <FlatList
-          data={this.state.dataObjects}
-          renderItem={this.renderRow}
-          keyExtractor={(item, index) => index.toString()}
-          initialNumToRender={this.onScreenWorth}
-          onEndReached={this.handleLoadMore}
-          onEndThreshold={100}
-          ListEmptyComponent={this.readerEmpty}
-          ItemSeparatorComponent={this.renderSeparator}
-        />
-      </View>
+      <LinearGradient colors={['#F0B0A5', '#EFE0A1']} style={styles.linearGradient}>
+        <View style={styles.container} testId='myCoursesScreen'>
+          <FlatList
+            data={this.state.dataObjects}
+            renderItem={this.renderRow}
+            keyExtractor={(item, index) => index.toString()}
+            initialNumToRender={this.onScreenWorth}
+            onEndReached={this.handleLoadMore}
+            onEndThreshold={100}
+            ListEmptyComponent={this.readerEmpty}
+            ItemSeparatorComponent={this.renderSeparator}
+          />
+        </View>
+      </LinearGradient>
     )
   }
 

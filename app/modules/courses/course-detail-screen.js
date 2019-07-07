@@ -8,6 +8,7 @@ import {jsDateToLocalDate} from "../../shared/util/date-transforms";
 import CourseActions from '../entities/course/course.reducer'
 import RoundedButton from '../../shared/components/rounded-button/rounded-button'
 import styles from './course-detail-screen-style'
+import LinearGradient from 'react-native-linear-gradient'
 
 class CourseDetailScreen extends React.Component {
   constructor(props){
@@ -104,33 +105,31 @@ class CourseDetailScreen extends React.Component {
     )
   }
 
-
-
   render() {
     return (
-      <ScrollView style={styles.container}>
-      <Text testID='title'>Title: {this.state.course.title}</Text>
-    <Text testID='description'>Description: {this.state.course.description}</Text>
-    <Text testID='courseStartDate'>CourseStartDate: {jsDateToLocalDate(this.state.course.courseStartDate)}</Text>
-    <Text testID='courseEndDate'>CourseEndDate: {jsDateToLocalDate(this.state.course.courseEndDate)}</Text>
-    <Text testID='registerStartDate'>RegisterStartDate: {jsDateToLocalDate(this.state.course.registerStartDate)}</Text>
-    <Text testID='registerEndDate'>RegisterEndDate: {jsDateToLocalDate(this.state.course.registerEndDate)}</Text>
-    <Text testID='duration'>Duration: {this.state.course.duration}</Text>
-    <Text testID='maximumNumberOfParticipants'>MaximumNumberOfParticipants: {this.state.course.maximumNumberOfParticipants}</Text>
-    <Text testID='minimalNumberOfParticipants'>MinimalNumberOfParticipants: {this.state.course.minimalNumberOfParticipants}</Text>
-    <Text testID='lecturerName'>LecturerName: {this.state.course.lecturerName}</Text>
-    <Text testID='lecturerSurname'>LecturerSurname: {this.state.course.lecturerSurname}</Text>
-    <Text testID='pointPerCourse'>PointPerCourse: {this.state.course.pointPerCourse}</Text>
-      <TouchableOpacity style={styles.button} onPress={this.signUpForCourse}>
-        <Text style={styles.buttonText}>Zapisz się</Text>
-      </TouchableOpacity>
+      <LinearGradient colors={['#F0B0A5', '#EFE0A1']} style={styles.linearGradient}>
+        <ScrollView style={styles.container}>
+          <Text testID='title' style={styles.text}>Tytuł: {this.state.course.title}</Text>
+          <Text testID='description' style={styles.text}>Opis: {this.state.course.description}</Text>
+          <Text testID='courseStartDate' style={styles.text}>Początek: {jsDateToLocalDate(this.state.course.courseStartDate)}</Text>
+          <Text testID='courseEndDate' style={styles.text}>Koniec: {jsDateToLocalDate(this.state.course.courseEndDate)}</Text>
+          <Text testID='registerStartDate' style={styles.text}>Początek rejestracji: {jsDateToLocalDate(this.state.course.registerStartDate)}</Text>
+          <Text testID='registerEndDate' style={styles.text}>Koniec rejestracji: {jsDateToLocalDate(this.state.course.registerEndDate)}</Text>
+          <Text testID='duration' style={styles.text}>Czas trwania: {this.state.course.duration}</Text>
+          <Text testID='maximumNumberOfParticipants' style={styles.text}>Maksymalna liczba uczestników: {this.state.course.maximumNumberOfParticipants}</Text>
+          <Text testID='minimalNumberOfParticipants' style={styles.text}>Minimalna liczba uczestników: {this.state.course.minimalNumberOfParticipants}</Text>
+          <Text testID='lecturerName' style={styles.text}>Prowadzący: {this.state.course.lecturerName} {this.state.course.lecturerSurname}</Text>
+          <Text testID='pointPerCourse' style={styles.text}>Punkty za ukończenie kursu: {this.state.course.pointPerCourse}</Text>
+          <TouchableOpacity style={styles.button} onPress={this.signUpForCourse}>
+            <Text style={styles.buttonText}>Zapisz się</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity style={this.state.isSignOutDisabled ?styles.disabled : styles.button} disabled={this.state.isSignOutDisabled} onPress={this.signOutFromCourse}>
-          <Text style={styles.buttonText}>Wypisz się</Text>
-        </TouchableOpacity>
+          <TouchableOpacity style={this.state.isSignOutDisabled ?styles.disabled : styles.button} disabled={this.state.isSignOutDisabled} onPress={this.signOutFromCourse}>
+            <Text style={styles.buttonText}>Wypisz się</Text>
+          </TouchableOpacity>
 
-
-      </ScrollView>
+        </ScrollView>
+      </LinearGradient>
     )
   }
 

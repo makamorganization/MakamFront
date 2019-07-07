@@ -61,7 +61,7 @@ class RegisterScreen extends React.Component {
             onSubmitEditing: () => this.refs.form.getComponent('studentCardNumber').refs.input.focus()
           },
           studentCardNumber: {
-            label: "Numer indeksu"
+            label: "Numer indeksu",
             returnKeyType: 'next',
             onSubmitEditing: () => this.refs.form.getComponent('studyYear').refs.input.focus()
           },

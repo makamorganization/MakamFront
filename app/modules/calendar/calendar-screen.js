@@ -16,7 +16,7 @@ class CalendarScreen extends React.PureComponent {
       loading:true,
       done: false,
       dataObjects:[],
-      items:[],
+      items:{},
     }
 
     LocaleConfig.locales['pl'] = {
@@ -33,7 +33,7 @@ class CalendarScreen extends React.PureComponent {
 
   renderItem(item) {
     return (
-      <View style={styles.container}>
+      <View style={[styles.item, {height: item.height}]}>
         <Text>
           {item.courseTitle}
         {item.courseDescription}
@@ -46,20 +46,33 @@ class CalendarScreen extends React.PureComponent {
     this.props.getMyCourses()
   }
 
+
+
+  timeToString(time) {
+    const date = new Date(time);
+    return date.toISOString().split('T')[0];
+  }
+
+  renderEmptyDate() {
+    return (
+      <View style={styles.emptyDate}></View>
+    );
+  }
+
+
   componentWillReceiveProps(newProps) {
 
-    //TODO POPRAWIC BO POKAZUJE ZE WSTAWIAM ARRAY A POWIENIEN BYC NIBY OBJECT, POMIMO WARNINGU WYSWIETLA SIE
     if (newProps.myCourses) {
       this.setState({
         dataObjects: this.state.loading ? [...this.state.dataObjects, ...newProps.myCourses] : newProps.myCourses,
         loading : false
       },function(){
-        let itemsArray ={};
+        let itemsObject ={};
         this.state.dataObjects.forEach((course) => {
-          itemsArray[course.courseStartDate] = [{courseTitle: course.title},{courseDescription: course.description}];
+          itemsObject[course.courseStartDate] = [{courseTitle: course.title},{courseDescription: course.description}];
         })
         this.setState({
-          items: itemsArray,
+          items: itemsObject,
         })
       })
     }
@@ -73,11 +86,10 @@ class CalendarScreen extends React.PureComponent {
     render() {
         return (
             <Agenda
-            minDate={new Date().getDate()}
             items={this.state.items}
             renderItem={this.renderItem.bind(this)}
             selected={new Date()}
-            renderEmptyData = {() => {return (<View />);}}
+            renderEmptyDate={this.renderEmptyDate.bind(this)}
             rowHasChanged={(r1, r2) => {return r1.text !== r2.text}}
 
             />

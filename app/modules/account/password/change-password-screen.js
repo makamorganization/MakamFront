@@ -23,17 +23,20 @@ class ChangePasswordScreen extends React.Component {
         fields: {
           currentPassword: {
             secureTextEntry: true,
+            label: "Aktualne hasło",
             testID: 'currentPasswordInput',
             returnKeyType: 'next',
             onSubmitEditing: () => this.refs.form.getComponent('newPassword').refs.input.focus()
           },
           newPassword: {
             secureTextEntry: true,
+            label: "Nowe hasło",
             testID: 'newPasswordInput',
             returnKeyType: 'next',
             onSubmitEditing: () => this.refs.form.getComponent('confirmPassword').refs.input.focus()
           },
           confirmPassword: {
+            label: "Potwierdź hasło",
             secureTextEntry: true,
             testID: 'confirmPasswordInput',
             returnKeyType: 'done',
@@ -55,7 +58,7 @@ class ChangePasswordScreen extends React.Component {
     const value = this.refs.form.getValue()
     if (value) { // if validation fails, value will be null
       if (value.newPassword !== value.confirmPassword) {
-        Alert.alert('Error', 'Passwords do not match', [{ text: 'OK' }])
+        Alert.alert('Błąd', 'Hasła się nie zgadzają', [{ text: 'OK' }])
         return
       }
       this.props.changePassword(value.currentPassword, value.newPassword)
@@ -66,12 +69,12 @@ class ChangePasswordScreen extends React.Component {
     // Did the changePassword attempt complete?
     if (!newProps.fetching) {
       if (newProps.error) {
-        Alert.alert('Error', newProps.error, [{ text: 'OK' }])
+        Alert.alert('Błąd', newProps.error, [{ text: 'OK' }])
       } else {
         this.setState({
           success: true
         })
-        Alert.alert('Success', 'Password changed', [{ text: 'OK' }])
+        Alert.alert('Sukces', 'Hasło zmienione', [{ text: 'OK' }])
       }
     }
   }

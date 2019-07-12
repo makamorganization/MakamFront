@@ -18,6 +18,8 @@ class CourseDetailScreen extends React.Component {
       courseId: props.data.courseId,
       course: {},
       isSignOutDisabled: false,
+      signingOutFromCourse: false,
+      signingUpForCourse: false
     }
   }
 
@@ -26,35 +28,39 @@ class CourseDetailScreen extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if(newProps.course) {
+    if (newProps.course) {
       this.setState({course: newProps.course})
     }
 
-
-    //TODO zaimplementowac poprawne sprawdzanie czy udalo sie porpawnie wypisac/zapisac na kurs
-    // console.log(newProps);
-    // if(!newProps.course && !newProps.errorSigningUpForCourse) {
-    //    Navigation.pop(this.props.componentId)
-    // } else {
-    //   Alert.alert('Błąd', 'Nie udało się zapisać na kurs', [{ text: 'OK' }])
-    //   this.setState({
-    //     success: false,
-    //     requesting: false
-    //   })
-    // }
-    //
-    //
-    // if(!newProps.course && !newProps.errorSigningOutFromCourse) {
-    //   Alert.alert('Suckes', 'Udało się wypisać z kursu', [{ text: 'OK' }])
-    // } else {
-    //   Alert.alert('Błąd', 'Nie udało się wypisać z kursu', [{ text: 'OK' }])
-    //   this.setState({
-    //     success: false,
-    //     requesting: false
-    //   })
-    // }
+    if (this.state.signingUpForCourse && newProps.signingUpForCourse === false) {
+      if (!newProps.errorSigningUpForCourse) {
+        this.props.getMyCourses()
+        Alert.alert('Sukces', 'Udało się zapisać do kursu', [{text: 'OK'}])
+        Navigation.pop(this.props.componentId);
+      } else {
+        Alert.alert('Błąd', 'Nie udało się zapisać na kurs', [{text: 'OK'}])
+        this.setState({
+          success: false,
+          requesting: false
+        })
+      }
 
 
+      if (this.state.signingOutFromCourse && newProps.signingOutFromCourse === false) {
+        if (!newProps.errorSigningOutFromCourse) {
+          this.props.getMyCourses()
+          Alert.alert('Sukces', 'Udało się wypisać z kursu', [{text: 'OK'}])
+        } else {
+          Alert.alert('Błąd', 'Nie udało się wypisać z kursu', [{text: 'OK'}])
+          this.setState({
+            success: false,
+            requesting: false
+          })
+        }
+      }
+
+
+    }
   }
 
 
@@ -70,9 +76,6 @@ class CourseDetailScreen extends React.Component {
             this.setState({ signingUpForCourse: true }, () => {
               this.props.signUpForCourse(this.props.data.courseId)
             })
-            this.props.getMyCourses()
-            Alert.alert('Sukces', 'Udało się zapisać do kursu', [{ text: 'OK' }])
-            Navigation.pop(this.props.componentId);
           }
         }
       ],
@@ -96,8 +99,6 @@ class CourseDetailScreen extends React.Component {
               isSignOutDisabled: true }, () => {
               this.props.signOutFromCourse(this.props.data.courseId)
             })
-            this.props.getMyCourses()
-            Alert.alert('Sukces', 'Udało się wypisać z kursu', [{ text: 'OK' }])
           }
         }
       ],

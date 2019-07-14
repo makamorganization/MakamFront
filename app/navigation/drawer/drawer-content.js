@@ -102,9 +102,9 @@ class DrawerContent extends Component {
         {this.props.loggedIn && (<DrawerButton testID='CoursesDrawerButton' text='Kursy' onPress={this.handlePressCourses} />)}
         {this.props.loggedIn && (<DrawerButton testID='RankDrawerButton' text='Ranking' onPress={this.handlePressRank} />)}
         {this.props.loggedIn && (<DrawerButton testID='CertificatesDrawerButton' text='Certyfikaty' onPress={this.handlePressCertificates} />)}
-        {this.props.loggedIn && (<DrawerButton testID='settingsDrawerButton' text='Settings' onPress={this.handlePressSettings} />)}
-        {this.props.loggedIn && (<DrawerButton testID='changePasswordDrawerButton' text='Change Password' onPress={this.handlePressChangePassword} />)}
-        {this.props.loggedIn && (<DrawerButton testID='logoutDrawerButton' text='Logout' onPress={this.handlePressLogout} />)}
+        {this.props.loggedIn && (<DrawerButton testID='settingsDrawerButton' text='Ustawienia' onPress={this.handlePressSettings} />)}
+        {this.props.loggedIn && (<DrawerButton testID='changePasswordDrawerButton' text='Zmień Hasło' onPress={this.handlePressChangePassword} />)}
+        {this.props.loggedIn && (<DrawerButton testID='logoutDrawerButton' text='Wyloguj' onPress={this.handlePressLogout} />)}
       </ScrollView>
     )
   }

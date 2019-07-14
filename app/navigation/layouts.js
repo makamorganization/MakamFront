@@ -108,7 +108,7 @@ export const appStack = {
               options: {
                 topBar: {
                   title: {
-                    text: 'Welcome!',
+                    text: 'Witaj!',
                     color: Colors.snow
                   },
                   leftButtons: [

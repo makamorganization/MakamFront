@@ -154,7 +154,8 @@ export const signUpForCourseSuccess = (state) => {
 export const signOutFromCourseSuccess = (state) => {
   return state.merge({
     signingOutFromCourse: false,
-    errorSingingOutFromCourse: null
+    errorSingingOutFromCourse: null,
+    course: null
   })
 }
 
@@ -217,7 +218,8 @@ export const signOutFromCourseFailure = (state, action) => {
   const { error } = action
   return state.merge({
     signingOutFromCourse: false,
-    errorSigningOutFromCourse: error
+    errorSigningOutFromCourse: error,
+    course: state.course
   })
 }
 

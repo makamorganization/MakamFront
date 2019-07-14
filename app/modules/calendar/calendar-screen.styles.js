@@ -4,10 +4,17 @@ import { ApplicationStyles, Colors } from '../../shared/themes'
 
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
-  container: {
+  item: {
+    backgroundColor: 'white',
     flex: 1,
-    justifyContent: 'center',
-    color: 'white',
-
+    borderRadius: 5,
+    padding: 10,
+    marginRight: 10,
+    marginTop: 17
+  },
+  emptyDate: {
+    height: 15,
+    flex:1,
+    paddingTop: 30
   }
 })

@@ -47,13 +47,13 @@ class ForgotPasswordScreen extends React.Component {
     if (!newProps.fetching) {
       if (newProps.error) {
         if (newProps.error === 'WRONG') {
-          Alert.alert('Error', 'Something when wrong resetting your password', [{ text: 'OK' }])
+          Alert.alert('Błąd', 'Coś poszło nie tak', [{ text: 'OK' }])
         }
       } else {
         this.setState({
           success: true
         })
-        Alert.alert('Success', 'Password reset email sent', [{ text: 'OK' }])
+        Alert.alert('Sukces', 'Zresetowane hasło zostało wysłane na maila', [{ text: 'OK' }])
         Navigation.popToRoot(this.props.componentId)
       }
     }

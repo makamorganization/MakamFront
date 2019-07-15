@@ -101,16 +101,16 @@ export function * deleteCourse (api, action) {
 }
 function mapDateFields (data) {
   if (data.courseStartDate) {
-    data.courseStartDate = localDateToJsDate(data.courseStartDate)
+    data.courseStartDate = data.courseStartDate
   }
   if (data.courseEndDate) {
-    data.courseEndDate = localDateToJsDate(data.courseEndDate)
+    data.courseEndDate = data.courseEndDate
   }
   if (data.registerStartDate) {
-    data.registerStartDate = localDateToJsDate(data.registerStartDate)
+    data.registerStartDate = data.registerStartDate
   }
   if (data.registerEndDate) {
-    data.registerEndDate = localDateToJsDate(data.registerEndDate)
+    data.registerEndDate = data.registerEndDate
   }
   return data
 }

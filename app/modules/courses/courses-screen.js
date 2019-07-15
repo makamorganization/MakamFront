@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import {FlatList, Text, TouchableOpacity, View} from 'react-native'
-import {courseDetailScreen, myCoursesEntityScreen} from "../../navigation/layouts";
+import {courseDetailScreen, myCoursesScreen} from "../../navigation/layouts";
 import { Navigation } from 'react-native-navigation'
 import styles from './courses-screen.style'
 import CourseActions from '../entities/course/course.reducer'
@@ -24,26 +24,38 @@ class CoursesScreen extends React.PureComponent {
     }
   }
 
-  navigationButtonPressed ({ buttonId }) {
-    courseDetailScreen({ courseId: null})
+  navigationButtonPressed ({ buttonId, disableSignUp }) {
+    courseDetailScreen({ courseId: null, disableSignUp:false})
+  }
+
+  componentWillUpdate() {
+    this.fetchCourses();
   }
 
 
   renderRow({ item }) {
+    var startDate = new Date(item.courseStartDate).toLocaleDateString("pl");
+    var startTime = new Date(item.courseStartDate).toLocaleTimeString("pl").substr(0,5);
+
+    var endDate = new Date(item.courseEndDate).toLocaleDateString("pl");
+    var endTime = new Date(item.courseEndDate).toLocaleTimeString("pl").substr(0,5);
+
+
     return (
-      <TouchableOpacity onPress={courseDetailScreen.bind(this,{courseId: item.id})}>
+      <TouchableOpacity onPress={courseDetailScreen.bind(this,{courseId: item.id, disableSignUp: false})}>
         <View style={styles.row}>
           <Text style={styles.label}>{item.title}</Text>
           <Text style={styles.boldLabel}>Czas: {item.duration}</Text>
-          <Text style={styles.boldLabel}>Początek: {item.courseStartDate}  Koniec: {item.courseEndDate}</Text>
+          <Text style={styles.boldLabel}>Początek: {startDate} {startTime}  Koniec: {endDate} {endTime}</Text>
         </View>
       </TouchableOpacity>
     )
   }
 
 
-  readerEmpty =() =>
-    <AlertMessage title='Nie znaleziono kursów' show={!this.props.fetching}/>
+  readerEmpty =() => {
+    return <AlertMessage title='Nie znaleziono kursów' show={!this.props.fetching}/>
+  }
 
   onScreenWorth = 20
 
@@ -82,7 +94,7 @@ class CoursesScreen extends React.PureComponent {
         return (
           <LinearGradient colors={['#F0B0A5', '#EFE0A1']} style={styles.linearGradient}>
             <View style={styles.container} testID='coursesScreen'>
-              <RoundedButton text='Moje kursy' onPress={myCoursesEntityScreen.bind(this)}/>
+              <RoundedButton text='Moje kursy' onPress={myCoursesScreen.bind(this)}/>
               <FlatList
                 data={this.state.dataObjects}
                 renderItem={this.renderRow}

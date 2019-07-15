@@ -18,7 +18,7 @@ import ForgotPasswordScreen from '../modules/account/password-reset/forgot-passw
 import ChangePasswordScreen from '../modules/account/password/change-password-screen'
 import EntitiesScreen from '../modules/entities/entities-screen'
 import CourseEntityScreen from '../modules/entities/course/course-entity-screen'
-import MyCoursesEntityScreen from '../modules/courses/my-courses-screen'
+import MyCoursesScreen from '../modules/courses/my-courses-screen'
 import CourseEntityDetailScreen from '../modules/entities/course/course-entity-detail-screen'
 import CourseEntityEditScreen from '../modules/entities/course/course-entity-edit-screen'
 import CourseDetailScreen from '../modules/courses/course-detail-screen'
@@ -58,7 +58,7 @@ export const LAUNCH_SCREEN = 'nav.LaunchScreen'
 export const DRAWER_CONTENT = 'nav.DrawerContent'
 export const ENTITIES_SCREEN = 'nav.EntitiesScreen'
 export const COURSE_ENTITY_SCREEN = 'Nav.CourseEntityScreen'
-export const MY_COURSES_ENTITY_SCREEN = 'Nav.MyCoursesEntityScreen'
+export const MY_COURSES_SCREEN = 'nav.MyCoursesScreen'
 export const COURSE_ENTITY_DETAIL_SCREEN = 'Nav.CourseEntityDetailScreen'
 export const COURSE_ENTITY_EDIT_SCREEN = 'Nav.CourseEntityEditScreen'
 export const COURSE_DETAIL_SCREEN = 'Nav.CourseDetailScreen'
@@ -171,7 +171,7 @@ export function registerScreensAndStartApp () {
   Navigation.registerComponentWithRedux(LAUNCH_SCREEN, () => LaunchScreen, Provider, store)
   Navigation.registerComponentWithRedux(ENTITIES_SCREEN, () => EntitiesScreen, Provider, store)
   Navigation.registerComponentWithRedux(COURSE_ENTITY_SCREEN, () => CourseEntityScreen, Provider, store)
-  Navigation.registerComponentWithRedux(MY_COURSES_ENTITY_SCREEN, () => MyCoursesEntityScreen, Provider, store)
+  Navigation.registerComponentWithRedux(MY_COURSES_SCREEN, () => MyCoursesScreen, Provider, store)
   Navigation.registerComponentWithRedux(COURSE_ENTITY_DETAIL_SCREEN, () => CourseEntityDetailScreen, Provider, store)
   Navigation.registerComponentWithRedux(COURSE_ENTITY_EDIT_SCREEN, () => CourseEntityEditScreen, Provider, store)
   Navigation.registerComponentWithRedux(COURSE_DETAIL_SCREEN, () => CourseDetailScreen, Provider, store)
@@ -343,9 +343,9 @@ export const courseEntityScreen = () => Navigation.push('center', {
   }
 })
 
-export const myCoursesEntityScreen = () => Navigation.push('center',{
+export const myCoursesScreen = (data) => Navigation.push('center',{
   component: {
-    name: MY_COURSES_ENTITY_SCREEN,
+    name: MY_COURSES_SCREEN,
     options: {
       topBar: {
         title: {

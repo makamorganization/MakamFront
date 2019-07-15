@@ -53,13 +53,13 @@ const create = (baseURL = AppConfig.apiUrl) => {
   const deleteUser = (userId) => api.delete('api/users/' + userId)
 
   const getCourse = (courseId) => api.get('api/courses/' + courseId)
-  const getCourses = (options) => api.get('api/courses', options)
-  const getMyCourses = (options) => api.get('api/courses/getCoursesForUser', options)
+  const getCourses = (options) => api.get('api/courses/?coursesForUser=false', options)
+  const getMyCourses = (options) => api.get('api/courses/?coursesForUser=true', options)
   const createCourse = (course) => api.post('api/courses', course)
   const updateCourse = (course) => api.put('api/courses', course)
   const deleteCourse = (courseId) => api.delete('api/courses/' + courseId)
-  const signUpForCourse = (courseId) => api.put('api/courses/signUpForCourse/' + courseId)
-  const signOutFromCourse = (courseId) => api.put('api/courses/signOutFromCourse/' + courseId)
+  const signUpForCourse = (courseId) => api.put('api/courses/signUp/' + courseId)
+  const signOutFromCourse = (courseId) => api.put('api/courses/signOut/' + courseId)
 
   const getUserDetail = (userDetailId) => api.get('api/user-details/' + userDetailId)
   const getUserDetails = (options) => api.get('api/user-details', options)

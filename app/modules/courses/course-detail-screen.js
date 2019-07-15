@@ -16,16 +16,18 @@ class CourseDetailScreen extends React.Component {
     Navigation.events().bindComponent(this)
     this.state = {
       courseId: props.data.courseId,
+      disableSignUp: props.data.disableSignUp,
       course: {},
-      isSignOutDisabled: false,
       signingOutFromCourse: false,
       signingUpForCourse: false
     }
+    console.log(props);
   }
 
   componentWillMount(){
     this.props.getCourse(this.props.data.courseId)
   }
+
 
   componentWillReceiveProps(newProps) {
     if (newProps.course) {
@@ -33,8 +35,9 @@ class CourseDetailScreen extends React.Component {
     }
 
     if (this.state.signingUpForCourse && newProps.signingUpForCourse === false) {
+      console.log(newProps);
       if (!newProps.errorSigningUpForCourse) {
-        this.props.getMyCourses()
+        this.props.getCourses()
         Alert.alert('Sukces', 'Udało się zapisać do kursu', [{text: 'OK'}])
         Navigation.pop(this.props.componentId);
       } else {
@@ -44,12 +47,14 @@ class CourseDetailScreen extends React.Component {
           requesting: false
         })
       }
-
+    }
 
       if (this.state.signingOutFromCourse && newProps.signingOutFromCourse === false) {
+        console.log(newProps);
         if (!newProps.errorSigningOutFromCourse) {
           this.props.getMyCourses()
           Alert.alert('Sukces', 'Udało się wypisać z kursu', [{text: 'OK'}])
+          Navigation.pop(this.props.componentId);
         } else {
           Alert.alert('Błąd', 'Nie udało się wypisać z kursu', [{text: 'OK'}])
           this.setState({
@@ -60,7 +65,7 @@ class CourseDetailScreen extends React.Component {
       }
 
 
-    }
+
   }
 
 
@@ -95,8 +100,7 @@ class CourseDetailScreen extends React.Component {
           text: 'Tak',
           onPress: () => {
             this.setState({
-              signingOutFromCourse: true,
-              isSignOutDisabled: true }, () => {
+              signingOutFromCourse: true}, () => {
               this.props.signOutFromCourse(this.props.data.courseId)
             })
           }
@@ -106,29 +110,50 @@ class CourseDetailScreen extends React.Component {
     )
   }
 
+
+  parsDat(item){
+    var startDate = new Date(item).toLocaleDateString("pl");
+    var startTime = new Date(item).toLocaleTimeString("pl").substr(0,5);
+
+    return startDate +" " +startTime;
+  }
+
+
   render() {
+    var startDate = this.parsDat(this.state.course.courseStartDate);
+    var endDate  = this.parsDat(this.state.course.courseEndDate);
+    var startRegisterDate  = this.parsDat(this.state.course.registerStartDate);
+    var endRegisterDate  = this.parsDat(this.state.course.registerEndDate);
+
+    let button;
+
+    if(this.state.disableSignUp == true) {
+      button = <TouchableOpacity style={styles.button} onPress={this.signOutFromCourse}>
+        <Text style={styles.buttonText}>Wypisz się</Text>
+      </TouchableOpacity>;
+    } else {
+      button = <TouchableOpacity style={styles.button} onPress={this.signUpForCourse}>
+        <Text style={styles.buttonText}>Zapisz się</Text>
+      </TouchableOpacity>;
+    }
+
+
+
     return (
       <LinearGradient colors={['#F0B0A5', '#EFE0A1']} style={styles.linearGradient}>
         <ScrollView style={styles.container}>
           <Text testID='title' style={styles.text}>Tytuł: {this.state.course.title}</Text>
           <Text testID='description' style={styles.text}>Opis: {this.state.course.description}</Text>
-          <Text testID='courseStartDate' style={styles.text}>Początek: {jsDateToLocalDate(this.state.course.courseStartDate)}</Text>
-          <Text testID='courseEndDate' style={styles.text}>Koniec: {jsDateToLocalDate(this.state.course.courseEndDate)}</Text>
-          <Text testID='registerStartDate' style={styles.text}>Początek rejestracji: {jsDateToLocalDate(this.state.course.registerStartDate)}</Text>
-          <Text testID='registerEndDate' style={styles.text}>Koniec rejestracji: {jsDateToLocalDate(this.state.course.registerEndDate)}</Text>
+          <Text testID='courseStartDate' style={styles.text}>Początek: {startDate}</Text>
+          <Text testID='courseEndDate' style={styles.text}>Koniec: {endDate}</Text>
+          <Text testID='registerStartDate' style={styles.text}>Początek rejestracji: {startRegisterDate}</Text>
+          <Text testID='registerEndDate' style={styles.text}>Koniec rejestracji: {endRegisterDate}</Text>
           <Text testID='duration' style={styles.text}>Czas trwania: {this.state.course.duration}</Text>
           <Text testID='maximumNumberOfParticipants' style={styles.text}>Maksymalna liczba uczestników: {this.state.course.maximumNumberOfParticipants}</Text>
           <Text testID='minimalNumberOfParticipants' style={styles.text}>Minimalna liczba uczestników: {this.state.course.minimalNumberOfParticipants}</Text>
           <Text testID='lecturerName' style={styles.text}>Prowadzący: {this.state.course.lecturerName} {this.state.course.lecturerSurname}</Text>
           <Text testID='pointPerCourse' style={styles.text}>Punkty za ukończenie kursu: {this.state.course.pointPerCourse}</Text>
-          <TouchableOpacity style={styles.button} onPress={this.signUpForCourse}>
-            <Text style={styles.buttonText}>Zapisz się</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={this.state.isSignOutDisabled ?styles.disabled : styles.button} disabled={this.state.isSignOutDisabled} onPress={this.signOutFromCourse}>
-            <Text style={styles.buttonText}>Wypisz się</Text>
-          </TouchableOpacity>
-
+          {button}
         </ScrollView>
       </LinearGradient>
     )
@@ -151,6 +176,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getCourse: (id) => dispatch(CourseActions.courseRequest(id)),
+    getCourses: (options) => dispatch(CourseActions.courseAllRequest(options)),
     getMyCourses: (options) => dispatch (CourseActions.myCoursesAllRequest(options)),
     signUpForCourse: (id) => dispatch(CourseActions.signUpForCourse(id)),
     signOutFromCourse: (id)=> dispatch(CourseActions.signOutFromCourse(id))

@@ -35,7 +35,6 @@ class CourseDetailScreen extends React.Component {
     }
 
     if (this.state.signingUpForCourse && newProps.signingUpForCourse === false) {
-      console.log(newProps);
       if (!newProps.errorSigningUpForCourse) {
         this.props.getCourses()
         Alert.alert('Sukces', 'Udało się zapisać do kursu', [{text: 'OK'}])
@@ -50,7 +49,6 @@ class CourseDetailScreen extends React.Component {
     }
 
       if (this.state.signingOutFromCourse && newProps.signingOutFromCourse === false) {
-        console.log(newProps);
         if (!newProps.errorSigningOutFromCourse) {
           this.props.getMyCourses()
           Alert.alert('Sukces', 'Udało się wypisać z kursu', [{text: 'OK'}])

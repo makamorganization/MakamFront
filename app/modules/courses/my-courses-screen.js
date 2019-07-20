@@ -23,25 +23,31 @@ class MyCoursesScreen extends React.PureComponent {
     }
   }
 
-  navigationButtonPressed ({buttonId}) {
-    courseDetailScreen({courseId: null})
+  navigationButtonPressed ({buttonId, disableSignUp}) {
+    courseDetailScreen({courseId: null, disableSignUp: true})
   }
 
 
   renderRow({item}) {
+
+    var startDate = new Date(item.courseStartDate).toLocaleDateString("pl");
+    var startTime = new Date(item.courseStartDate).toLocaleTimeString("pl").substr(0,5);
+
+    var endDate = new Date(item.courseEndDate).toLocaleDateString("pl");
+    var endTime = new Date(item.courseEndDate).toLocaleTimeString("pl").substr(0,5);
+
     return (
-      <TouchableOpacity onPress={courseDetailScreen.bind(this,{courseId: item.id})}>
+      <TouchableOpacity onPress={courseDetailScreen.bind(this,{courseId: item.id, disableSignUp: true})}>
         <View style={styles.row}>
           <Text style={styles.label}>{item.title}</Text>
           <Text style={styles.boldLabel}>Czas: {item.duration}</Text>
-          <Text style={styles.boldLabel}>Początek: {item.courseStartDate}  Koniec: {item.courseEndDate}</Text>
+          <Text style={styles.boldLabel}>Początek: {startDate} {startTime}  Koniec: {endDate} {endTime}</Text>
         </View>
       </TouchableOpacity>
     )
   }
 
   readerEmpty = () => {
-   console.log(this.props);
     return <AlertMessage title='Nie znaleziono kursów' show={!this.props.fetching} />
   }
 
@@ -58,7 +64,8 @@ class MyCoursesScreen extends React.PureComponent {
     }
 
     this.setState({
-      page: this.state.page + 1
+      page: this.state.page + 1,
+      loading: true
     })
     this.fetchCourses()
   }
